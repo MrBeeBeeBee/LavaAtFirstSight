@@ -1,59 +1,104 @@
-﻿# The script of the game goes in this file.
-
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
-define t1 = Character("The Cloaked Dagger")
-define t2 = Character("The Bodyguard")
-define t3 = Character("The Best")
-define t4 = Character("Key Frame Crusader")
-define t5 = Character("Golden Boy")
+define n = Character('Narrator')
+define p = Character('Me')
+define bg = Character('The Bodyguard') #Shaun masters
+define tb = Character('The Best') #Ardbert D'arc
+define cd = Character('The Cloaked Dagger') #Casper beauregard
+define kfc = Character('Key Frame Crusader') #Marcus Smith
+define gb = Character('Golden Boy') #John summers
 
 
-# The game starts here.
 
 label start:
 
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
+   # okay so add bg island.jpg or .png  to images directory
+   # scene bg island 
 
-    scene bg genshin
+   # pre-establish the lore(TM)
+   n "You can see it in the distance, at first just a little spec on the horizon but now fully coming into view-- The Island."
+   p "This is where the note said I'd find the liar..."
+   n "You notice the large volcano the note said Golden Boy's liar would be within."
+   p "....Wow that's...really just...a whole volcano, huh?"
+   n "While you wait for your boat to reach shore, you think of how your legacy will forever change if you accomplish this mission."
+   n "You will no longer be a low-level pest of a villian to Sunnydayle Valley's only hero."
+   n "You will finally be known for more than just stealing traffic cones, stealing from Christmas Charity Buckets, and printing off fake money."
+   n "You will finally be seen for what you are-- a supervillian."
+   n "The world will one day remember the name of...who will they remember the name of?"
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
+   #player name moment
+   $ player_name = renpy.input("What is your name?")
+   #gets rid of extra spaces in name
+   $ player_name = player_name.strip()
+   #in case player enters nothing
+   if player_name == "":
+    n "Well the world must remember something...hmm.. how about something dark and scary... Susan"
+    $ player_name="Susan"
 
-    show joost blue
+   n "You're now nearly there. Thankfully, the anonymous note said it would be easy to slip inside Golden Boy's liar within the volcano itself, giving you plenty to lay a trap to ruin his day."
+   n "Your boat finally reaches shore... but something in your gut is urging you to reconsider. If you want to turn back, something tells you that now is your only chance."
+  
+   menu StayorGo:
+    p "Do I leave?"
 
-    t1 "I'm finally real! I'm a real boy!"
+    "<Leave island>":
+        jump BadEnd
+    "<Continue to volcano>":
+        jump Day1
+    
+label BadEnd:
+        n "You stare at the volcano for a long while, weighing your options."
+        p "Yeah...yeah no I think I'll pass on this one."
+        "ONE WEEK LATER"
+        "{INSERT HOW THE VILLIANS DIED}"
+        p "Holy shit..."
+        n "Things are about to be a lot different now... but you can't help but wonder, who gave you that note? What had happened if you had stayed? You suppose you'll never truly know."
+        ".:. Bad Ending."
+        return 
 
-    show joost hat
+label Day1:
+        #add volcanointerior.jpg or .png to images directory
+        #scene bg volacanointerior 
+        #with dissolve
+        
+         n "Eventually, you make your way through the island's greenery and arrive at the entrance of the volcano."
+         n "As the note suggested, the opening wasn't hard to find. There was some cover, but you are the greatest supervillian in the area, so it's not surprising you so easily detected the hidden cavernous entrance."
+         n "As you enter, carefully walking forward, you see a door just up ahead in the cavern."
+         p "Bingo."
+         n "You begin heading toward the door when-"
+         # Future bang noise (game/audio directory)? -> play sound "file ext"
+         "BANG!"
+         n "The cavern fills with the sounds of loud grinding noises as the cavern entrance is suddenly closed off by a large door."
+         p "NO NO NO NO"
 
-    t1 "..."
-    t1 "What..? I'm a character in a visual novel..?"
-    t1 "I guess I always suspected it... I need some time alone..."
+         menu door1:
+            p "What do I do?"
 
-    "The Cloaked Dagger skulks away..."
-    with dissolve
+            "<Head to door at the end of the cavern>":
+                    jump CharacterIntros
 
-    with fade
-    scene bg zeroescape
+            "<Try to get the door open>":
+                n "There's no use. You left all your gizmos on the boat and all your gadgets at home. This door isn't going to budge without something more than your own two hands."
+                n "Certain there's no other options, you head to the door at the end of the cavern."
 
-    show joost punk
-    t2 "I'm also real! I'm a real boy!"
+   
+label CharacterIntros:
+        p "Wouldn't be the first time I walked into a trap... but what kind of trap is this supposed to be?"
+        n "Ahead, you hear what sounds like... arguing? You can't make out where they are saying but it seems to be multiple voices on the other side of the door bickering."
+        n "Determind to keep pushing forward, you make your way toward the other door. The door easily slides open as you step inside, attempting to be quiet in your attempt to continue inside."
+        # Future bang noise (game/audio directory)? -> play sound "file ext"
+        n "BANG!"
+        p "Shit."
+        n "The noise of the door locking behind you echoes throughout, alerting the group of people ahead of your presence."
 
-    show joost silly
+        #show ardbert neutral
+        #with dissolve
+        # n "The first one to speak is a familiar pompous, purple-haired, and extravagantly dressed man. "
+        #tb "You! %(player_name)!"
+       
+        #show casper neutral
+        #with dissolve
 
-    t1 "..."
-    t1 "What..? I'm a character in a visual novel..?"
+        #show shaun neutral
+        #with dissolve
 
-    show joost spike
-
-    t2 "No! I refuse to believe this! I'll prove that I'm real one way or another, you'll see!"
-
-    "The Bodyguard storms off..."
-
-    # This ends the game.
-
-    return
+        #show marcus neutral
+        #with dissolve
