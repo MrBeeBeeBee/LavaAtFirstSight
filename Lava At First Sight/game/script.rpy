@@ -25,7 +25,7 @@ label start:
    n "The anonymous note said it would be easy to slip inside Golden Boy's liar within the volcano itself, giving you plenty to lay a trap to ruin his day."
    n "Your boat finally reaches shore... but something in your gut is urging you to reconsider. If you want to turn back, something tells you that now is your only chance."
   
-   menu:
+   menu StayorGo:
     p "Do I leave?"
 
     "<Leave island>":
@@ -57,15 +57,21 @@ label Day1:
          n "The cavern fills with the sounds of loud grinding noises as the cavern entrance is suddenly closed off by a large door."
          p "NO NO NO NO"
 
-         menu:
+         menu door1:
             p "What do I do?"
 
-            "<Head to door at the end of the cavern>"
-                p "Wouldn't be the first time I walked into a trap... but what kind of trap is this supposed to be?"
-                n "Ahead, you hear"
-                n "Determind to keep pushing forward, you make your way toward the other door. The door easily creaks open
+            "<Head to door at the end of the cavern>":
+                    jump CharacterIntros
 
-            "<Try to get the door open>"
-                n "There's no use. "
+            "<Try to get the door open>":
+                n "There's no use. You left all your gizmos on the boat and all your gadgets at home. This door isn't going to budge without something more than your own two hands."
+                    jump door1
 
    
+label CharacterIntros:
+        p "Wouldn't be the first time I walked into a trap... but what kind of trap is this supposed to be?"
+        n "Ahead, you hear what sounds like... arguing? You can't make out where they are saying but it seems to be multiple voices on the other side of the door bickering."
+        n "Determind to keep pushing forward, you make your way toward the other door. The door easily slides open as you step inside, attempting to be quiet in your attempt to continue inside."
+        n "BANG!"
+        p "Shit."
+        n "The noise of the door locking behind you echoes throughout, alerting the group of people ahead of your presence."
