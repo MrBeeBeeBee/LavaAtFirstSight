@@ -77,7 +77,7 @@ label Day1:
 
             "<Try to get the door open>":
                 n "There's no use. You left all your gizmos on the boat and all your gadgets at home. This door isn't going to budge without something more than your own two hands."
-                    jump door1
+                n "Certain there's no other options, you head to the door at the end of the cavern."
 
    
 label CharacterIntros:
