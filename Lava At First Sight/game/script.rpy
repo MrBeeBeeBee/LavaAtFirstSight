@@ -1,17 +1,17 @@
 define n = Character('Narrator')
 define p = Character('Me')
 define bg = Character('The Bodyguard') #Shaun masters
-define tb = Character('The Best') #Ardbert D'arc
 define cd = Character('The Cloaked Dagger') #Casper beauregard
 define kfc = Character('Key Frame Crusader') #Marcus Smith
 define gb = Character('Golden Boy') #John summers
-
+define tb = Character('%(player_name)s the Best') #Ardbert D'arc
+image bg island = "island.png"
 
 
 label start:
 
    # okay so add bg island.jpg or .png  to images directory
-   # scene bg island 
+   scene bg island 
 
    # pre-establish the lore(TM)
    n "You can see it in the distance, at first just a little spec on the horizon but now fully coming into view-- The Island."
@@ -30,8 +30,9 @@ label start:
    $ player_name = player_name.strip()
    #in case player enters nothing
    if player_name == "":
-    n "Well the world must remember something...hmm.. how about something dark and scary... Susan"
-    $ player_name="Susan"
+     n "Well the world must remember something...hmm.. how about something dark and scary... Susan"
+     $ player_name="Susan"
+     #checking
 
    n "You're now nearly there. Thankfully, the anonymous note said it would be easy to slip inside Golden Boy's liar within the volcano itself, giving you plenty to lay a trap to ruin his day."
    n "Your boat finally reaches shore... but something in your gut is urging you to reconsider. If you want to turn back, something tells you that now is your only chance."
@@ -56,7 +57,7 @@ label BadEnd:
 
 label Day1:
         #add volcanointerior.jpg or .png to images directory
-        #scene bg volacanointerior 
+        #scene bg cavern
         #with dissolve
         
          n "Eventually, you make your way through the island's greenery and arrive at the entrance of the volcano."
@@ -84,6 +85,10 @@ label CharacterIntros:
         p "Wouldn't be the first time I walked into a trap... but what kind of trap is this supposed to be?"
         n "Ahead, you hear what sounds like... arguing? You can't make out where they are saying but it seems to be multiple voices on the other side of the door bickering."
         n "Determind to keep pushing forward, you make your way toward the other door. The door easily slides open as you step inside, attempting to be quiet in your attempt to continue inside."
+        
+        #scene bg volcanointeriorday
+        #with dissolve
+
         # Future bang noise (game/audio directory)? -> play sound "file ext"
         n "BANG!"
         p "Shit."
@@ -91,8 +96,15 @@ label CharacterIntros:
 
         #show ardbert neutral
         #with dissolve
-        # n "The first one to speak is a familiar pompous, purple-haired, and extravagantly dressed man. "
-        #tb "You! %(player_name)!"
+        n "The first one to speak is a familiar pompous, purple-haired, and extravagantly dressed man. "
+        tb "%(player_name)s!"
+        p "Oh not this guy."
+        n "You, unfortunately, are very familiar with %(player_name)s the Best. Your worst enemy. The most insufferable man you've ever met."
+        tb "Oh for God's sake why are YOU here? No, no, why are any of us here?"
+        p "I was given a note. I'm assuming you all were as well?"
+        tb "No, no, I was told I alone was being told this location."
+        p "Evidently fucking not."
+
        
         #show casper neutral
         #with dissolve
