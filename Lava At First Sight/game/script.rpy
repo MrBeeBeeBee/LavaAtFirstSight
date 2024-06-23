@@ -17,6 +17,8 @@ image bg volcanoerupt = "bg island nightEruption.png"
 image bg beachday = "bg beachfront day.png"
 image bg news = "bg news.png"
 image bg cavern = "bg volcanoCavern.png"
+image bg personalRoom = "bgb personalRoom.png"
+image bg personalHallway = "bg personalHallway.png"
 
 #characters
 image a_neutral = "ardbert neutral.png"
@@ -35,16 +37,17 @@ default cdRel = 1
 default kfcRel = 1
 default bgrel = 1
 default tbRel = 1
+default GBRoute = "No"
 
 label start:
    # okay so add bg island.jpg or .png  to images directory
    scene bg island 
-   play music "audio/Test.wav" volume 0.5
+   # play music "audio/Test.wav" volume 0.5
 
    # pre-establish the lore(TM)
    n "You can see it in the distance, at first just a little spec on the horizon but now fully coming into view-- The Island."
-   p "This is where the note said I'd find the liar..."
-   n "You notice the large volcano the note said Golden Boy's liar would be within."
+   p "This is where the note said I'd find the lair..."
+   n "You notice the large volcano the note said Golden Boy's lair would be within."
    p "....Wow that's...really just...a whole volcano, huh?"
    n "While you wait for your boat to reach shore, you think of how your legacy will forever change if you accomplish this mission."
    n "You will no longer be a low-level pest of a villian to Sunnydayle Valley's only hero."
@@ -79,7 +82,7 @@ label BadEnd:
         
         scene bg news with dissolve
         p "Holy shit..."
-        "They bodies of four known villians were found in the volcanic ruins of Hot-Hot-Romantic-Summer-Isalnd-Firey-Passion Island, informally known as Jenny Island."
+        "The bodies of four known villians were found in the volcanic ruins of Hot-Hot-Romantic-Summer-Island-Firey-Passion Island, informally known as Jenny Island."
         "The Bodyguard, [player_name] the Best, The Key Frame Crusader, and the Cloaked Dagger were found early this morning. Local authorities have stated they are still looking for the culprit, and what this means for the city at large."
         n "Things are about to be a lot different now... but you can help but wonder, who gave you that note? What had happened if you had stayed? You suppose you will never truly know."
         ".:. Bad Ending."
@@ -111,7 +114,7 @@ label CharacterIntros:
         with dissolve
         p "Wouldn't be the first time I walked into a trap... but what kind of trap is this supposed to be?"
         n "Ahead, you hear what sounds like... arguing? You can't make out where they are saying but it seems to be multiple voices on the other side of the door bickering."
-        n "Determind to keep pushing forward, you make your way toward the other door. The door easily slides open as you step inside, attempting to be quiet in your attempt to continue inside."
+        n "Determind to keep pushing forward, you make your way towards the other door. The door easily slides open as you step inside, attempting to be quiet as you continue inside."
 
         # Future bang noise (game/audio directory)? -> play sound "file ext"
         n "BANG!"
@@ -181,7 +184,7 @@ label CharacterIntros:
         hide s_talking
 
         #talking to KFC
-        p "Four?"
+        p "Five?"
         n "you notice now the fifth among you, a rather stunning individual with long, flowing green hair."
         show m_talking at left
         with dissolve
@@ -251,33 +254,97 @@ label CavernSunset1:
     n "Still, even as you approach your own quarters, you don't feel capable of rest just yet."
     jump Night1Choice
 
-
 label Night1Choice:
     scene bg volcanonight
     define visited = set()
-
+    default visitconfirm = "No"
     menu NightChoice1:
 
         set visited
         n "What will you do?"
 
         # Scorching End 1
-        "<Go Straight to Bed>":
+        "<Go Straight to Bed>" if visitconfirm == "No":
+            scene bg personalRoom
+
             jump ScorchingEnd1
         "<Talk to [player_name] the Best>":
+            $ visitconfirm = "Yes"
             jump TalktoTB
         "<Follow the Cloaked Dagger>":
+            $ visitconfirm = "Yes"
+            scene bg personalHallway
+
             jump FollowCD
         "<Follow the Bodyguard>":
+            $ visitconfirm = "Yes"
+            scene bg personalHallway
+
             jump FollowBG
         "<Follow the Key Frame Crusader>":
+            $ visitconfirm = "Yes"
+            scene bg personalHallway
+
             jump FollowKFC
         #secret ending start
-        "<Investigate the seam in the wall>":
+        "<Investigate the seam in the wall>" if visitconfirm == "No":
+            $ visitconfirm = "Yes"
+            $ GBRoute = "Yes"
             jump InvestigateSeam
 
+        #Finish Day 1
+        "<Call it a night>" if visitconfirm == "Yes":
+            scene bg personalRoom
+            p "...What the fuck"
+            n "Your room is not quite what you expected. The dull room with a weirdly detailed rug, washed in shades of pinks, purples, and reds."
+            n "It wasn't exactly what you expected in a situation where you are functionally kidnapped, but that's not necessarily bad?"
+            menu DreamNight1:
+                n "Who do you dream of in the night?"
+                "The Cloaked Dagger":
+                    "Your mind is filled with thoughts of his masked face, the swift way in which his capes move, and the way he caught your eye. Will he be the one?"
+                    $ cdRel =+ 1
+                "The Bodyguard":
+                    "Your mind is filled with thoughts of your childhood together, memories you had thought were forgotten now coming to the surface. You truly had missed him more than you though. Will he be the one?"
+                    $ bgRel =+ 1
+                "The Key Frame Crusader":
+                    "Your mind is filled with thoughts of his green flowing hair, the sway of his hips, and the mystery behind his motivations. Will he be the one?"
+                    $ kfcRel =+ 1
+                "[player_name] the Best":
+                    "Your mind is filled with... well, thoughts of you? Not quite you, though. You but better. Is [player_name] the Best really that much better? More importantly, will he be the one?"
+                    $ tbRel =+ 1
+                "Golden Boy" if GBRoute == "Yes":
+                    "Your mind is filled with the thoughts of your rival, your enemy, and maybe your last hope. Would he come to save you? Would he miss you? Why couldn't he be the one with you here?"
+                    $ gbRel =+ 1
+            n "You are unsure of what the morning will bring, but you suppose you'll have to be prepared whether you want to be or not."
+            jump Day2
+
 label ScorchingEnd1:
+    scene bg personalRoom
+    play music "audio/ScorchingEnd1.wav" volume 0.25
+
+    p "...What the fuck"
+    n "Your room is not quite what you expected. The dull room with a weirdly detailed rug, washed in shades of pinks, purples, and reds."
+    n "It wasn't exactly what you expected in a situation where you are functionally kidnapped, but that's not necessarily bad?"
+    n "You have trouble falling asleep, as if your body is urging you not to. Even still, you ignore it and eventually sleep takes you."
+    n "The following three days were... not good for you"
+    n "Having missed out on your initial chances for connection with your fellow villians, they paired off in the night without you."
+    n "[player_name] the Best and The Bodyguard eventually found a romantic connection, sharing a tender moment as they realize they both share a connection to you."
+    n "The Cloaked Dagger and Key Frame Crusader paired up by Day 2, at first out of necessity and convenience, but quickly discovered they did both share a surprising love connection."
+    n "The two couples are permitted to leave, but you are not."
+
     scene bg volcanoerupt with dissolve
+
+    n "You die alone and burning."
+    n "Nobody will remember you"
+    n "Golden Boy never even knew who you were."
+    n "You have always been an obstacle and you were finally removed, proving your own lesser status."
+    n "Did it have to be this way?"
+    n "Was that the only way this could have ended?"
+
+    ".:. SCORCHING END 1"
+
+
+    return
 
 label InvestigateSeam:
     "THIS ROUTE IS UNDER CONSTRUCTION"
@@ -285,10 +352,77 @@ label InvestigateSeam:
 
 label TalktoTB:
     scene bg volcanonight
-    "UNDER CONSTRUCTION"
 
-    jump Night1Choice
+    n "turning around again, you see [player_name] the Best still hammering on the wall and whailing."
+    show a_neutral with dissolve
+    p "Good to know he's still annoying as ever."
+    n "You move closer to him and once you're only a few steps away, he turns around frantically."
+    hide a_neutral 
+    show a_talking with dissolve
+    tb "YOU!"
+    hide a_talking
+    show a_neutral with dissolve
+    p "Me?"
+    hide a_neutral 
+    show a_talking with dissolve
+    tb "No I'm talking to the other [player_name] in the room with us. YES, I'm talking to you, dumbass."
+    hide a_talking
+    show a_neutral with dissolve
+    n "Rude"
+    hide a_neutral 
+    show a_talking with dissolve
+    tb "You are behind this all. I know it was you. You... you LURED me here. You knew I would want to find Golden Boy's lair and you LIED."
+    hide a_talking
+    show a_neutral with dissolve
+    menu:
+        "Wait, you got the same anonymous tip?":
+            n "He looks confused at you for a second, but eventually he nods."
+            hide a_neutral 
+            show a_talking with dissolve
+            tb "Yeah. It--YOU--said that I would find him here and that I would have the leg up because I was the only one who would know this."
+            hide a_talking
+            show a_neutral with dissolve
+            p "[player_name] the Best, you know I didn't do this. I'm just as trapped here as you."
+            tb "They seem skeptical, but are resigned to the fact that the choice is to either trust you or die"
 
+        "You are going crazy, I didn't send you anything.":
+            n "He looks at you skeptically, unbelieving."
+            hide a_neutral 
+            show a_talking with dissolve
+            tb "Mhm sure. Whatever you say, creep. Get me out of here. Now."
+            hide a_talking
+            show a_neutral with dissolve
+            p "I am not lying, I really didn't. I got an anonymous tip telling me this was Golden Boy's lair and I showed up. It said I was the only one who was being told this."
+            n "His disbelief slowly melts into something closer to apathy. He may have no choice but to believe you in order to survive."
+
+    tb "I'm going to bed"
+    hide a_talking
+    show a_neutral with dissolve
+    menu:
+        n "What do you say?"
+
+        "You're going to die here":
+            $ tbRel =- 1
+            n "Woah. Intense much?"
+            n "He flips you off as he leaves, returning to his own room."
+            hide a_neutral
+            n "Well, where to now?"
+            jump NightChoice1
+        "Goodnight, [player_name] the Best.":
+            $ tbRel =+ 1
+            n "He looks at you over his shoulder and gives a soft but confused smile."
+            hide a_neutral 
+            show a_talking with dissolve
+            tb "Goodnight, [player_name]"
+            hide a_talking
+            n "Well, where to now?"
+            jump NightChoice1
+        "<Stay Silent>":
+            hide a_neutral
+            n "He leaves standing alone in the central chamber of the volcano."
+            n "Well, where to now?"
+            jump NightChoice1
+            
 label FollowCD:
     #scene bg
     "UNDER CONSTRUCTION"
@@ -307,3 +441,5 @@ label FollowKFC:
 
     jump Night1Choice
 
+label Day2:
+    scene bg personalroom
