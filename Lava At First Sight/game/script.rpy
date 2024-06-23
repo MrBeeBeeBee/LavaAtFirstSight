@@ -273,11 +273,11 @@ label Night1Choice:
             jump TalktoTB
         "<Follow the Cloaked Dagger>":
             $ visitconfirm = "Yes"
-            scene bg personalHallway
-
+        
             jump FollowCD
         "<Follow the Bodyguard>":
             $ visitconfirm = "Yes"
+
             jump FollowBG
         "<Follow the Key Frame Crusader>":
             $ visitconfirm = "Yes"
@@ -292,29 +292,9 @@ label Night1Choice:
 
         #Finish Day 1
         "<Call it a night>" if visitconfirm == "Yes":
-            scene bg personalRoom
-            p "...What the fuck"
-            n "Your room is not quite what you expected. The dull room with a weirdly detailed rug, washed in shades of pinks, purples, and reds."
-            n "It wasn't exactly what you expected in a situation where you are functionally kidnapped, but that's not necessarily bad?"
-            menu DreamNight1:
-                n "Who do you dream of in the night?"
-                "The Cloaked Dagger":
-                    "Your mind is filled with thoughts of his masked face, the swift way in which his capes move, and the way he caught your eye. Will he be the one?"
-                    $ cdRel =+ 1
-                "The Bodyguard":
-                    "Your mind is filled with thoughts of your childhood together, memories you had thought were forgotten now coming to the surface. You truly had missed him more than you though. Will he be the one?"
-                    $ bgRel =+ 1
-                "The Key Frame Crusader":
-                    "Your mind is filled with thoughts of his green flowing hair, the sway of his hips, and the mystery behind his motivations. Will he be the one?"
-                    $ kfcRel =+ 1
-                "[player_name] the Best":
-                    "Your mind is filled with... well, thoughts of you? Not quite you, though. You but better. Is [player_name] the Best really that much better? More importantly, will he be the one?"
-                    $ tbRel =+ 1
-                "Golden Boy" if GBRoute == "Yes":
-                    "Your mind is filled with the thoughts of your rival, your enemy, and maybe your last hope. Would he come to save you? Would he miss you? Why couldn't he be the one with you here?"
-                    $ gbRel =+ 1
-            n "You are unsure of what the morning will bring, but you suppose you'll have to be prepared whether you want to be or not."
-            jump Day2
+            jump CallitaNight
+            
+
 
 label ScorchingEnd1:
     scene bg personalRoom
@@ -494,8 +474,7 @@ label FollowCD:
     jump Night1Choice
 
 label FollowBG:
-    #scene bg
-    "UNDER CONSTRUCTION"
+    scene bg personalHallway
 
     jump Night1Choice
 
@@ -505,5 +484,119 @@ label FollowKFC:
 
     jump Night1Choice
 
-label Day2:
-    scene bg personalroom
+label CallitaNight:
+            scene bg personalRoom with dissolve
+            p "...What the fuck"
+            n "Your room is not quite what you expected. The dull room with a weirdly detailed rug, washed in shades of pinks, purples, and reds."
+            n "It wasn't exactly what you expected in a situation where you are functionally kidnapped, but that's not necessarily bad?"
+            "KNOCK KNOCK"
+            n "The knocking noise on your door catches your attention"
+            bg "[player_name], are you in there?"
+            n "Recognizing the voice of your childhood friend, you peak your head out into the hallway."
+            scene bg personalHallway with dissolve
+            show m_neutral at Position(xpos = 0.15)
+            show c_neutral at Position(xpos = 0.40)
+            show s_neutral at Position(xpos = 0.65)
+            show a_neutral at Position(xpos = 0.9)
+            n "Facing you is all four of your fellow villians, staring at you."
+            p "Is everything okay?"
+            n "You see the Bodyguard point at your room, seemingly mouthing 'Talk Inside'"
+            n "You shuffle into your room, quickly shutting the door once the last of you had filed in."
+            hide s_neutral
+            show s_talking at Position(xpos = 0.65)
+            bg "Sorry, we needed to keep quiet."
+            hide s_talking
+            show s_neutral at Position(xpos = 0.65)
+            hide c_neutral
+            show c_talking at Position(xpos = 0.40)
+            cd "The rooms are the only spaces without cameras. For now, we are under the assumption there is a but more privacy in here."
+            hide c_talking
+            show c_neutral at Position(xpos = 0.40)
+            hide s_neutral
+            show s_talking at Position(xpos = 0.65)
+            bg "As far as we can tell anyway. I was looking around to find any clues and... well, didn't find much. Cameras. The inventions."
+            bg "Whoever has us in here? I don't think they're kidding."
+            hide s_talking
+            show s_neutral at Position(xpos = 0.65)
+            p "Why?"
+            hide s_neutral
+            show s_talking at Position(xpos = 0.65)
+            bg "The lack of cameras in our room imples that well, our captor was prepared for a reality in which we were rather quickly fond of one another."
+            hide s_talking
+            show s_neutral at Position(xpos = 0.65)
+            hide a_neutral
+            show a_talking at Position(xpos = 0.9)
+            tb "They didn't want to see us fucking, basically."
+            hide a_talking
+            show a_neutral at Position(xpos = 0.9)
+            n "You see the Bodyguard scrunch his nose a bit at that."
+            hide s_neutral
+            show s_talking at Position(xpos = 0.65)
+            bg "Yes. That."
+            hide s_talking
+            show s_neutral at Position(xpos = 0.65)
+            hide a_talking
+            show a_neutral at Position(xpos = 0.9)
+            tb "Well suffice to say I am never going to romance [player_name], so I suppose one of you others will have to do."
+            hide a_talking
+            show a_neutral at Position(xpos = 0.9)
+            p "Wow, fuck you too."
+            hide a_neutral
+            show a_talking at Position(xpos = 0.9)
+            tb "You're my ultimate rival. You are the ruiner of days. The bane of my existence. Me but less better."
+            tb "Or whatever, I don't care. Shut up. Why can't we just leave through the door, anyway?"
+            hide a_talking
+            show a_neutral at Position(xpos = 0.9)
+            hide m_neutral
+            show m_talking at Position(xpos = 0.15)
+            kfc "The kitchen seems stalked only for about three days. Even if it's fake, it does us no good to try to prove it's wrong."
+            kfc "I did notice a locked door opposite of the rest of these, though. It's locked, unsurprisingly."
+            hide m_talking
+            show m_neutral at Position(xpos = 0.15)
+            n "More discussions and theories were thrown at each other over the course of a few hours, and soon you all begin to grow tired."
+            n "You still must decide how to best survive this, but you can all come to one agreement:"
+            n "Whoever trapped you here must have been another villian, perhaps a newcomer, attempting to cull the competition."
+            hide c_neutral
+            show c_talking at Position(xpos = 0.40)
+            cd "The door is impenetrable by normal means, but we seem to have an entire room of gadgets at our disposal."
+            cd "[player_name] I know that is your realm of expertise, but should you choose that option, I would be more than happy to assist."
+            hide c_talking
+            show c_neutral at Position(xpos = 0.40)
+            n "Other than a few grumbles from [player_name] the Best at the mention of your expertise, the group seems to nod along. It seems you have a free pick of the litter on who you'd like to assist you."
+            hide m_neutral
+            show m_talking at Position(xpos = 0.15)
+            kfc "Even if the gadgets fail, we should pair up now in case we have to resort to faking our love connections."
+            kfc "Like my Ma always used to say, a moment of embarrassment is nothing in comparison to potentially losing your life."
+            hide m_talking
+            show m_neutral at Position(xpos = 0.15)
+            n "There is no way she said all that."
+            n "But even then, it wasn't terrible advice."
+            
+            menu RouteChoice:
+                 n "So, who will it be [player_name]?"
+                 
+                 "<[player_name] the Best?>":
+                    $ tbRel =+ 1
+                    jump TheBestRoute
+                 "<The Cloaked Dagger>":
+                    $ cdRel =+ 1
+                    jump CloakedDaggerRoute
+                 "<The Bodyguard>":
+                    $ bgRel =+ 1
+                    jump BodyGuardRoute
+                 "<Key Frame Crusader>":
+                    $ kfcRel =+ 1
+                    jump KeyFrameCrusaderRoute
+
+
+label TheBestRoute:
+    #test
+
+label CloakedDaggerRoute:
+    #test
+
+label BodyGuardRoute:
+    #test
+
+label KeyFrameCrusaderRoute:
+    #test
