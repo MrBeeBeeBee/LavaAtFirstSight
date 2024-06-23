@@ -38,6 +38,7 @@ default kfcRel = 1
 default bgrel = 1
 default tbRel = 1
 default GBRoute = "No"
+default gbRel = 0
 
 label start:
    # okay so add bg island.jpg or .png  to images directory
@@ -294,8 +295,6 @@ label Night1Choice:
         "<Call it a night>" if visitconfirm == "Yes":
             jump CallitaNight
             
-
-
 label ScorchingEnd1:
     scene bg personalRoom
     play music "audio/ScorchingEnd1.wav" volume 0.25
@@ -475,6 +474,56 @@ label FollowCD:
 
 label FollowBG:
     scene bg personalHallway
+    n "Sometimes it's easier to stick to what you know, especially when you know so, so little."
+    show s_neutral
+    n "You follow your former friend down the hallway, letting the chord of connection you share pull you in the direction he walked."
+    n "He stops in front of a door, a small gold plaster on the door with the name 'The Bodyguard' written on it."
+    p "Are you okay?"
+    n "Hearing your voice, he turns around to give you his full attention."
+    hide s_neutral
+    show s_talking
+    bg "Ah. [player_name]. It's..."
+    hide s_talking
+    show s_neutral
+    p "Been a while? Yeah.  Yeah, I know."
+    n "There is a somber moment shared between you, standing in the hallway of your captor."
+    hide s_neutral
+    show s_talking
+    bg "Are you well? Other than uh, present circumstances?"
+    hide s_talking
+    show s_neutral
+    menu:
+        "I've been better":
+            n "He clears his throat awkwardly."
+            hide s_neutral
+            show s_talking
+            bg "Yeah, I get that."
+        "Never been better, other than present circumstances":
+            n "He gives a soft smile at that"
+            hide s_neutral
+            show s_talking
+            bg "I'm glad."
+            hide s_talking
+            show s_neutral
+            p "And you?"
+            hide s_neutral
+            show s_talking
+            bg "Oh you know, living the dream."
+        "I'll give you one guess":
+            $ bgRel =- 1
+            n "He opens his mouth to speak, but slowly closes it with a wince."
+            hide s_neutral
+            show s_talking
+            bg "I suppose that's fair."
+    n "You point at the plaque above his door."
+    p "Assigned rooms, then?"
+    hide s_neutral
+    show s_talking
+    bg "I guess so. Guess whoever it is planned for us to be spending a few nights here afterall."
+    hide s_talking
+    n "Well, it certainly meant... something."
+    n "You talk a bit more about the circumstances at hand and your shared past, but eventually the Bodyguard takes his leave and slips inside his room."
+    n "Returning to the main chamber, you can't help but wonder what the others think is going on."
 
     jump Night1Choice
 
@@ -549,7 +598,7 @@ label CallitaNight:
             show a_neutral at Position(xpos = 0.9)
             hide m_neutral
             show m_talking at Position(xpos = 0.15)
-            kfc "The kitchen seems stalked only for about three days. Even if it's fake, it does us no good to try to prove it's wrong."
+            kfc "The kitchen seems stalked for more than just three days, so someone probably lived here before. Even if it's fake, it does us no good to try to prove it's wrong."
             kfc "I did notice a locked door opposite of the rest of these, though. It's locked, unsurprisingly."
             hide m_talking
             show m_neutral at Position(xpos = 0.15)
@@ -575,28 +624,73 @@ label CallitaNight:
             menu RouteChoice:
                  n "So, who will it be [player_name]?"
                  
+                 ## START THE BEST'S ROUTE
                  "<[player_name] the Best?>":
                     $ tbRel =+ 1
-                    jump TheBestRoute
+                    hide c_neutral
+                    hide a_neutral
+                    hide s_neutral
+                    hide m_neutral
+                    show a_neutral
+                    n "The grin that spread across the purple man's face almost made you wish you picked someone else."
+                    hide a_neutral
+                    show a_talking
+                    tb "Well, naturally. Who else would you choose?"
+                    n "Every moment of every day this man is hell bent on mimicing you, something you'll have to get used to now that you've signed him up as your partner."
+                    n "If nothing else, he wants to be free of you as quickly as you want to be free of him-- something useful when looking for an escape partner."
+                    hide a_talking
+                    n "You notice the Bodyguard's wide shoulder's slump at finding out he wasn't chosen, but whatever emotions he had were quickly swept away."
+                    n "Expressionless as always, the Cloaked Dagger gives a singular nod. You aren't sure, but you are certain the feather of his hat drooped ever so slightly."
+                    n "Lastly, the Key Frame Crusader seemed like he barely registered any of the conversation anyway."
+                    n "The green man was staring off ever since his comment about his mother, before shuffling after the Cloaked Dagger and the Bodyguard."
+                    n "Lastly, [player_name] the Best leaves. He gives a once over, scanning you for something you could not determine, before giving a tense shadow of a smile and quickly turning on his feet to leave."
+                    p "Every choice I have ever made in my life has somehow led to this exact moment."
+                    n "It's as funny as it is depressing and surreal."
+                    n "You dream of [player_name] the Best after slowly drifting off to sleep, your eyelids heavy and your heart even moreso at the thought of what would happen in the morning."
+                    jump TheBestRouteDay2
+                ## START THE CLOAKED DAGGER'S ROUTE
                  "<The Cloaked Dagger>":
                     $ cdRel =+ 1
-                    jump CloakedDaggerRoute
+                    jump CloakedDaggerRouteDay2
+                ## START THE BODYGUARD'S ROUTE
                  "<The Bodyguard>":
                     $ bgRel =+ 1
-                    jump BodyGuardRoute
+                    hide c_neutral
+                    hide a_neutral
+                    hide s_neutral
+                    hide m_neutral
+                    show s_neutral
+                    n "It is easy to tell that the Bodyguard has to hide a small smile when you turn to him. He seems to school his expression back the moment he realizes, but it was far too late at that point."
+                    n "Unsurprisingly, given your history, he agrees to help you."
+                    n "What is surprising is how kind he seemed to be even after all these years, something unexpected from a man of his size."
+                    n "And boy was he a big man."
+                    hide s_neutral
+                    n "[player_name] the Best scoffs, clearly upset by his lack of being chosen and leaves the room."
+                    n "Expressionless as always, the Cloaked Dagger gives a singular nod. You aren't sure, but you are certain the feather of his hat drooped ever so slightly."
+                    n "Lastly, the Key Frame Crusader seemed like he barely registered any of the conversation anyway."
+                    n "The green man was staring off ever since his comment about his mother, before shuffling after the Cloaked Dagger and [player_name] the Best."
+                    n "The Bodyguard--Shaun-- leaves last, giving you yet another soft smile before slipping out the door and leaving you to yourself for the night."
+                    p "Every choice I have ever made in my life has somehow led to this exact moment."
+                    n "It's as funny as it is depressing and surreal."
+                    n "You dream of Shaun after slowly drifting off to sleep, your eyelids heavy and your heart even moreso at the thought of what would happen in the morning."
+                    jump BodyGuardRouteDay2
+                ## START THE KEY FRAME CRUSADER'S ROUTE
                  "<Key Frame Crusader>":
                     $ kfcRel =+ 1
-                    jump KeyFrameCrusaderRoute
+                    jump KFCDay2
 
-
-label TheBestRoute:
+label CloakedDaggerRouteDay2:
     #test
+    "ROUTE UNDERCONSTRUCTION"
+    return
 
-label CloakedDaggerRoute:
-    #test
+label BodyGuardRouteDay2:
+    "ROUTE UNDER CONSTRUCTION"
+    return
 
-label BodyGuardRoute:
-    #test
+label KFCDay2:
+    "ROUTE UNDERCONSTRUCTION"
+    return
 
-label KeyFrameCrusaderRoute:
+label TheBestRouteDay2:
     #test
