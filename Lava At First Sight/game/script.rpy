@@ -88,7 +88,7 @@ label start:
     
 label BadEnd:
         stop music
-        play music "audio/Test.wav" volume 0.25
+        play music "audio/Sad.mp3"
         n "You stare at the volcano for a long while, weighing your options."
         p "Yeah...yeah no I think I'll pass on this one."
         "ONE WEEK LATER"
@@ -103,6 +103,8 @@ label BadEnd:
 
 label Day1:
     scene bg cavern with dissolve
+    stop music
+    play music "audio/Test.wav"
 
     n "Eventually, you make your way through the island's greenery and arrive at the entrance of the volcano."
     n "As the note suggested, the opening wasn't hard to find. There was some cover, but you are the greatest supervillian in the area, so it's not surprising you so easily detected the hidden cavernous entrance."
@@ -270,6 +272,8 @@ label CavernSunset1:
     jump Night1Choice
 
 label Night1Choice:
+    stop music
+    play music "audio/Emotional.mp3"
     scene bg volcanonight
     define visited = set()
     default visitconfirm = "No"
@@ -316,7 +320,7 @@ label CallitaNight:
             p "...What the fuck"
             n "Your room is not quite what you expected. The dull room with a weirdly detailed rug, washed in shades of pinks, purples, and reds."
             n "It wasn't exactly what you expected in a situation where you are functionally kidnapped, but that's not necessarily bad?"
-            play sound "audio/knock sound.mp3" volume 0.75
+            play sound "audio/knock sound.mp3" volume 0.25
             "KNOCK KNOCK"
             n "The knocking noise on your door catches your attention"
             bg "[player_name], are you in there?"
@@ -641,6 +645,9 @@ label FollowCD:
 
 label FollowBG:
     scene bg personalHallway
+    stop music
+    play music "audio/Emotional.mp3"
+
     n "Sometimes it's easier to stick to what you know, especially when you know so, so little."
     show s_neutral
     n "You follow your former friend down the hallway, letting the chord of connection you share pull you in the direction he walked."
@@ -695,7 +702,6 @@ label FollowBG:
     #scene bg
     "UNDER CONSTRUCTION"
 
-
     jump Night1Choice
 
 label FollowKFC:
@@ -720,6 +726,8 @@ label KFCDay2:
 
 label TheBestRouteDay2:
     play sound "audio/Motif SFX.mp3"
+    stop music
+    play music "Happy.mp3"
     scene bg personalRoom with fade
     n "BANG! BANG! BANG!"
     n "You're rudely woken up by a series of incredibly loud knocks at your door, accompanied by an unfortunately immediately recognizeable shrill voice."
@@ -779,18 +787,19 @@ label TheBestRouteDay2:
             hide a_talking
             show a_neutral
             n "Before you can get out any sort of response, [player_name] the Best is already leading you towards the invention room."
-            n "UNDER CONSTRUCTION."
             jump TBInventionScene
 
 label TBInventionScene:
+    stop music
+    play music "audio/Happy.mp3"
     scene bg inventionRoom with dissolve
-    n "The moment the two of you set foot in the invention room, you're both blown away by the facilities within. It's not the most high-tech to begin with, but one thing catches your eye."
+
     show a_talking
     tb "Oh my heavens, there's a crafting table!"
     hide a_talking
     show a_neutral
-    p "Holy fuck it's a crafting table!"
-    n "Yes, a crafting table. Inspired by the incredibly popular video game Cavernbuild, 3D printing technology had soared in recent years, culminating in the most expensive yet easiest way to make whatever your mind desired."
+    p "Holy fuck it's actually a crafting table."
+    n "Yes, a crafting table. Inspired by the incredibly popular video game Cavernbuild. 3D printing technology had soared in recent years, culminating in the most expensive yet easiest way to make whatever your mind desired."
     n "With the right know-how, dedicated time, and even a vague idea of what you want to make, just about anything was possible."
     n "If you both weren't so enamoured, you might even begin to wonder who could afford to have such a thing on a deserted island."
     n "Grandiose in all ways, [player_name] the Best immediately pipes up with an equally grand suggestion."
@@ -814,8 +823,8 @@ label TBInventionScene:
     n "[player_name] the Best keeps jabbering on and on about his \"accomplishments\" while you try to keep your head in any sort of productive mood. It's not working too well, and you're getting to the point where you need to say SOMETHING."
     menu SpeakUp:
         n "What do you say?"
+        ## neutral options
         "My inventions have held their own more than a few times, you know.":
-            $ tbRel =+ 2
             hide a_talking
             show a_neutral
             n "[player_name] the Best opens his mouth to object, but you keep going."
@@ -832,8 +841,9 @@ label TBInventionScene:
             show a_neutral
             n "[player_name] the Best turns away to hide his face, mumbling something about \"Of COURSE his inventions inspire the masses\"."
             n "You can't help but notice the obvious blushing he tries to hide. Maybe it is a LITTLE fun to tease him."
-
             jump TBInventionTest
+
+         #me when i stroke his ego
         "Absolutely, you've always been the better inventor between the two of us, after all.":
             $ tbRel =+ 1
             hide a_talking
@@ -851,6 +861,7 @@ label TBInventionScene:
             n "[player_name] the Best turns away to resume working, but you can see the corner of his mouth curl up in what seems to be a smile, with his cheeks blushing just a little."
             n "Perhaps the praise meant more to him than you realized."
             
+            #stfu twink
             jump TBInventionTest
         "You've literally never invented a single thing better than my worst invention.":
             $ tbRel =- 1
@@ -963,14 +974,10 @@ label TBInventionTest:
             
             jump TBKitchenScene
 
-label TBKitchenScene:
-    show bg kitchenNight
-    n "KITCHEN TIME!!!!! Now kiss."
-    n "UNDER CONSTRUCTION"
-    return
-    #test
-
 label ScorchingEnd2:
+    scene bg volcanoerupt with dissolve
+    stop music
+    play music "audio/Sad.mp3"
     n "[player_name] the Best goes to yell at you, but finds himself coming up short with what to say. Without a word, he begins to sob relentlessly."
     n "The scene goes on uncomfortably long, with the sounds of [player_name] the Best's sobbing only being broken up by the cracking flames of the broken flying machine."
     n "After a while of this, [player_name] the Best wipes away his tears and looks over at you with a tired expression."
@@ -994,3 +1001,55 @@ label ScorchingEnd2:
     n "Romance is dead, but it sure is hot in here."
     return
     #test
+
+label TBKitchenScene:
+    show bg kitchenNight with dissolve
+    stop music
+    play music "audio/Emotional.mp3"
+
+    show a_neutral
+    n "Well at least Key Frame Crusader was right, the kitchens were certainly stocked."
+    n "You make your way into the kitchen, looking for what food there is to make."
+    n "When was the last time you ate? You don't even remember anymore."
+    n "Another thing you can't tell is whether it's the starving stomach or changing feelings, you don't... entirely dread being in the presence of [player_name] the Best."
+    n "Glancing over to your partner-in-escape, you wonder if this could be a chance to stare woeing them."
+    n "Well, you were certain the quickest way to the heart is throught he back with a sharp knife... but in this case, you could try the stomach."
+    hide a_neutral
+
+    menu MakeTBFood:
+        "<Attempt to make Beef Stroganoff (You, dear player, do not know how to make Beef Stroganoff)>":
+            #test
+            n "...Well, if you're sure that's what you want to do."
+            n "It's sure to impress him if it works!"
+            n "You both work together and despite your combined efforts, the dish ends up... horrendous."
+            # one day insert failed image of bad beef stroganoff here
+            n "It tastes fine... if you eat fast. It doesn't add much to morale nor does it precisely woe your target but... food is food!"
+            n "You share a moment where you wipe a bit of food off his face, but in an act of panic he recoils and excuses himself for the night."
+            n "Well, could have been worse?"
+            n "You get up and clean the mess you both made, washing the dishes and spending at least fifteen minutes staring at the needlessly fancy dishwasher until you could open it."
+            uk "Hello, Mr. Summers!"
+            n "You jump back at the dishwasher...speaking, to you?"
+            p "Who?"
+            n "The dishwasher does not reply, the message seemingly automatic. Who programs their dishwasher to say hello to them?"
+            n "It appears that your captor, likely this 'Mr.Summers', is someone who does that."
+
+            scene bg roomNight with dissolve
+            n "New clue in hand, you eventually return to your room for the evening."
+            jump Day3
+
+        "<Attempt to make Pizza>":
+            $ tbRel =+ 1
+
+            jump Day3
+
+        "<Attempt to make Spaghetti>":
+            $ tbRel =+ 2
+
+            jump Day3
+    
+
+label Day3:
+    play sound "audio/Motif SFX.mp3"
+    scene bg personalRoom with fade
+    "END OF ROUTE IS UNDER CONSTRUCTION"
+    return
