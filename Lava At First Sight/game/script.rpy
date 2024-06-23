@@ -14,6 +14,7 @@ image bg volcanoday = "bg volcanoChamber Day.png"
 image bg volcanonight = "bg volcanoChamber Night.png"
 image bg volcanosunset = "bg volcanoChamber sunset.png"
 image bg volcanoerupt = "bg island nightEruption.png"
+
 image bg beachday = "bg beachfront day.png"
 image bg news = "bg news.png"
 image bg cavern = "bg volcanoCavern.png"
@@ -940,8 +941,123 @@ label TBInventionScene:
             jump TBInventionTest
 
 label TBInventionTest:
+    show bg volcanosunset with fade
+    n "The flying machine has been completed by the afternoon, and it's finally time to test it. You had to assemble the parts outside of the invention room for fear of it not fitting through the door, but it was ready to go."
+    show a_talking
+    tb "At last, the fruits of our labor are shown! Now let us prove once and for all that our minds are made of the same stuff as the greats of old!"
+    hide a_talking
+    show a_neutral
+    p "For the sake of everyone's lives in here, I hope that's the truth bud. Let's give it a spin."
+    n "As the two of you get inside the flying machine, it whirs to live, brimming with electricity."
+    n "All is well during initial takeoff, and you begin rising from the ground in no time. [player_name] the Best pumps his fist in the air."
+    hide a_neutral
+    show a_talking
+    tb "MUAHAHAHAHA! Behold! The power of a genius at work!"
+    hide a_talking
+    show a_neutral
+    n "Maybe [player_name] the Best should have kept quiet just a BIT longer, as the engine starts smoking violently."
+    n "Sharing a look between the both of you, you dive out of each side of the machine as it crashes down to the ground."
+    hide a_neutral
+    n "As you both pick yourselves off the ground and stare at the rubble that was your first flying machine, you think to yourself that every great invention has a million failed prototypes. You'll just have to try again."
+    show a_neutral
+    n "[player_name] the Best, however, doesn't have such an optimistic outlook on things. A quick glance shows you his scrunched up expression, trying and failing to fight back tears."
+    hide a_neutral
+    show a_talking
+    tb "You... You... You must have messed something up, [player_name]! There's no other reason this could have failed!"
+    hide a_talking
+    show a_neutral
+    menu: InventionBlame
+        n "What do you say in response?"
+        "You're right, I must have messed up a calculation or two.":
+            $ tbRel =+ 1
+            n "Looking dejected, you sit on the ground and start to mope. You definitely weren't focused the whole time in there, a mistake wasn't out of the question."
+            n "With things like these, you needed to be exact with everything. A slight miscalculation and the whole thing crumbles. Maybe [player_name] was right."
+            p "Sorry for messing things up, I understand if you want to keep trying without me."
+            n "[player_name] the Best looks at you with complete shock. You somehow keep surprising them today. He picks himself off the ground before slowly approaching you and resting a hand on your shoulder."
+            n "His expression softens as he looks at you, and you get the feeling that he's going to comfort you."
+            hide a_neutral
+            show a_talking
+            tb "Get yourself off the ground and stop moping around like a total wuss. We have work to do and I won't have you holding me back."
+            hide a_talking
+            show a_neutral
+            n "You were wrong."
+            hide a_neutral
+            show a_talking
+            tb "You know what, I think we just need to figure out how to work together a little bit better."
+            hide a_talking
+            show a_neutral
+            n "Both of your stomachs begin rumbling and you share a look of mutual understanding."
+            hide a_neutral
+            p "The kitchen?"
+            show a_talking
+            tb "The kitchen."
+            n "[player_name] the Best helps you off the ground as he ushers you towards the kitchen. It's time to eat."
+
+            jump TBKitchenScene
+        "Are you kidding me? This is all my fault? Take a good look at yourself, buddy.":
+            jump ScorchingEnd2
+        "Calm down, jeez. Everyone makes mistakes, we just need to keep trying till we get it.":
+            $ tbRel =+ 2
+            n "Looking dejected, you sit on the ground and start to mope. Neither of you were focused the whole time in there, a mistake wasn't out of the question."
+            n "With things like these, you needed to be exact with everything. A slight miscalculation and the whole thing crumbles. You'd be able to try again, though."
+            p "Sorry for messing things up, I understand if you want to keep trying without me."
+            n "[player_name] the Best looks at you with complete shock. You somehow keep surprising them today. He picks himself off the ground before slowly approaching you and resting a hand on your shoulder."
+            n "His expression softens as he looks at you, and it seems like he feels sympathetic towards you."
+            hide a_neutral
+            show a_talking
+            tb "Come on, let me help you up. We might not have got it this time, but the both of us are made of stronger stuff than that. If you weren't, I'd have killed you by now due to my AMAZING strength."
+            hide a_talking
+            show a_neutral
+            n "[player_name] the Best flexes a little, still sure of his strength from his earlier hit he landed on you."
+            hide a_neutral
+            show a_talking
+            tb "You know what, I think we just need to figure out how to work together a little bit better."
+            hide a_talking
+            show a_neutral
+            n "Both of your stomachs begin rumbling and you share a look of mutual understanding."
+            hide a_neutral
+            p "The kitchen?"
+            n "[player_name] the Best nods in agreement."
+            show a_talking
+            tb "Let us learn to truly collaberate in the greatest warzone known to man."
+            tb "The kitchen."
+            n "[player_name] the Best helps you off the ground as he ushers you towards the kitchen. It's time to eat."
+            
+            jump TBKitchenScene
+
+label TBKitchenScene:
+    show bg kitchenNight
+    n "KITCHEN TIME!!!!! Now kiss."
+    n "UNDER CONSTRUCTION"
     return
     #test
+
+label ScorchingEnd2:
+    n "[player_name] the Best goes to yell at you, but finds himself coming up short with what to say. Without a word, he begins to sob relentlessly."
+    n "The scene goes on uncomfortably long, with the sounds of [player_name] the Best's sobbing only being broken up by the cracking flames of the broken flying machine."
+    n "After a while of this, [player_name] the Best wipes away his tears and looks over at you with a tired expression."
+    hide a_neutral
+    show a_talking
+    tb "You know what? Go ahead, work on it yourself. I'll focus on doing something more productive with my time. You can get burnt to a crisp for all I care."
+    hide a_talking
+    n "[player_name] the Best walks away without sparing another thought towards you, marching directly towards The Bodyguard's room."
+    show bg volcanonight with fade
+    n "The day ends with you cleaning up your failed invention and preparing for the next day."
+    show bg volcanoday with fade
+    n "As the day ticks by, you find yourself alone in the invention room, frantically calculating as your workload has increased twofold."
+    show bg volcanosunset with fade
+    n "The others are nowhere to be seen, likely having socialized and paired up, lacking faith in your ability to complete the machine in time."
+    show bg volcanonight with fade
+    n "As you continue to work, you don't even notice as the PA system announces the departure of two groups."
+    n "Seems like The Bodyguard and [player_name] the Best grouped up, The Bodyguard always was an expert at comforting people."
+    n "Key Frame Crusader and The Cloaked Dagger also paired up. Likely a strategic move from what you've seen of the two of them."
+    n "And here you are, alone. Destined to die a no-one supervillain on an island in the middle of nowhere."
+    show bg volcanoerupt with fade
+    n "Romance is dead, but it sure is hot in here."
+    return
+    #test
+
+
 
 =======
 label Day2:
