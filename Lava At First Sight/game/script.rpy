@@ -1039,7 +1039,31 @@ label TBKitchenScene:
 
         "<Attempt to make Pizza>":
             $ tbRel =+ 1
-
+            p "Pizza, that should be pretty simple."
+            n "Thankfully, you are relatively correct."
+            n "Making the pizza alongside [player_name] the Best goes well, both of you even beginning to joke around regarding pizza toppings."
+            menu Pizza:
+                n "What is your favorite?"
+                
+                "I'm just a cheese kind of guy.":
+                    n "The other man side eyes you, clearly in disgust, but says nothing else as you cook"
+                "Veggies all the way!":
+                    n "The other man side eyes you, clearly in disgust, but says nothing else as you cook"
+                "Meat lovers is the only way to go":
+                    n "The other man side eyes you, clearly in disgust, but says nothing else as you cook"
+                "Hawaiin or nothing.":
+                    $ tbRel =-1
+                    n "The other man side eyes you, gagging slightly in utter disgust. He says nothing, but you can sense he really didn't like that."
+            n "Unfortunately, just when everything begins to go well, the mood set, the smell of the pizza wafts through the entire interior chambers of the volcano."
+            n "The other three villians rush in, some asking and others simply taking from the prepared pizza without a second thought."
+            n "Despite the mood change, you and [player_name] the Best share one final smile before parting for the night, food in hand."
+            n "Well, could have been worse?"
+            n "You get up and clean the mess you both made, washing the dishes and spending at least fifteen minutes staring at the needlessly fancy dishwasher until you could open it."
+            uk "Hello, Mr. Summers!"
+            n "You jump back at the dishwasher...speaking, to you?"
+            p "Who?"
+            n "The dishwasher does not reply, the message seemingly automatic. Who programs their dishwasher to say hello to them?"
+            n "It appears that your captor, likely this 'Mr.Summers', is someone who does that."
             jump Day3
 
         "<Attempt to make Spaghetti>":
