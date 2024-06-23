@@ -38,7 +38,10 @@ default kfcRel = 1
 default bgrel = 1
 default tbRel = 1
 default GBRoute = "No"
+<<<<<<< HEAD
 default gbRel = 0
+=======
+>>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
 
 label start:
    # okay so add bg island.jpg or .png  to images directory
@@ -115,7 +118,11 @@ label CharacterIntros:
         with dissolve
         p "Wouldn't be the first time I walked into a trap... but what kind of trap is this supposed to be?"
         n "Ahead, you hear what sounds like... arguing? You can't make out where they are saying but it seems to be multiple voices on the other side of the door bickering."
+<<<<<<< HEAD
         n "Determined to keep pushing forward, you make your way towards the other door. The door easily slides open as you step inside, attempting to be quiet as you continue inside."
+=======
+        n "Determind to keep pushing forward, you make your way towards the other door. The door easily slides open as you step inside, attempting to be quiet as you continue inside."
+>>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
 
         # Future bang noise (game/audio directory)? -> play sound "file ext"
         n "BANG!"
@@ -170,8 +177,13 @@ label CharacterIntros:
         bg "%(player_name)s? Is that you?"
         hide s_talking
         show s_neutral
+<<<<<<< HEAD
         n "Your childhood friend. Shaun. He goes by The Bodyguard now, last you heard. You can't remember the last time you spoke to one another."
         p "The Bodyguard? What's going on here?"
+=======
+        n "Your childhood friend. Shaun. He goes by the Bodyguard now, last you heard. You can't remember the last time you spoke to one another."
+        p "Bodyguard? What's going on here?"
+>>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
         hide s_neutral
         show s_talking
         bg "I'm... not sure. "
@@ -221,7 +233,11 @@ label CavernDay1:
          n "Before anyone has time to answer, a voice rings out from the PA system that of course this volcano happens to have."
          n "Unlike all of the voices and faces before, this voice is... unrecognizable. It was distorted beyond recognition, the words barely distinguishable amidst the static."
          uk "Congratulations, my friends."
+<<<<<<< HEAD
          uk "As you may have guessed, you have all been brought here under what one might call false pretenses."
+=======
+         uk "As you may have guessed, you have all been brought here under what one might call, false pretense."
+>>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
          uk "I'm sorry to have to tell you this, but this volcano is set to explode in three days. Which means that should you not manage to escape, you'll be burnt to ash."
          n "Well that's... lovely."
          uk "But! I do have good news."
@@ -249,7 +265,11 @@ label CavernSunset1:
     tb "LET ME OUT. LET ME THE FUCK OUT OF HERE. FUCKING SHIT BITCH."
     hide a_talking
     n "Good thing he didn't overreact"
+<<<<<<< HEAD
     n "You turn away from %(player_name)s the Best banging on the metal doors to the Bodyguard. The taller man only looks back to you for a moment before leaving."
+=======
+    n "You turn away from %(player_name)s banging on the metal doors to the Bodyguard. The taller man only looks back to you a moment before leaving."
+>>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
     n "You notice then that him, the Key Frame Crusader, and the Cloaked Dagger were all heading to rooms built into the central chamber."
     n "Whoever your host is, at least they were generous enough to give you beds."
     n "Still, even as you approach your own quarters, you don't feel capable of rest just yet."
@@ -274,10 +294,19 @@ label Night1Choice:
             jump TalktoTB
         "<Follow the Cloaked Dagger>":
             $ visitconfirm = "Yes"
+<<<<<<< HEAD
         
             jump FollowCD
         "<Follow the Bodyguard>":
             $ visitconfirm = "Yes"
+=======
+            scene bg personalHallway
+
+            jump FollowCD
+        "<Follow the Bodyguard>":
+            $ visitconfirm = "Yes"
+            scene bg personalHallway
+>>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
 
             jump FollowBG
         "<Follow the Key Frame Crusader>":
@@ -286,6 +315,7 @@ label Night1Choice:
 
             jump FollowKFC
         #secret ending start
+<<<<<<< HEAD
         "<Investigate the room?>" if visitconfirm == "No":
             $ visitconfirm = "Yes"
             $ GBRoute = "Yes"
@@ -295,6 +325,39 @@ label Night1Choice:
         "<Call it a night>" if visitconfirm == "Yes":
             jump CallitaNight
             
+=======
+        "<Investigate the seam in the wall>" if visitconfirm == "No":
+            $ visitconfirm = "Yes"
+            $ GBRoute = "Yes"
+            jump InvestigateSeam
+
+        #Finish Day 1
+        "<Call it a night>" if visitconfirm == "Yes":
+            scene bg personalRoom
+            p "...What the fuck"
+            n "Your room is not quite what you expected. The dull room with a weirdly detailed rug, washed in shades of pinks, purples, and reds."
+            n "It wasn't exactly what you expected in a situation where you are functionally kidnapped, but that's not necessarily bad?"
+            menu DreamNight1:
+                n "Who do you dream of in the night?"
+                "The Cloaked Dagger":
+                    "Your mind is filled with thoughts of his masked face, the swift way in which his capes move, and the way he caught your eye. Will he be the one?"
+                    $ cdRel =+ 1
+                "The Bodyguard":
+                    "Your mind is filled with thoughts of your childhood together, memories you had thought were forgotten now coming to the surface. You truly had missed him more than you though. Will he be the one?"
+                    $ bgRel =+ 1
+                "The Key Frame Crusader":
+                    "Your mind is filled with thoughts of his green flowing hair, the sway of his hips, and the mystery behind his motivations. Will he be the one?"
+                    $ kfcRel =+ 1
+                "[player_name] the Best":
+                    "Your mind is filled with... well, thoughts of you? Not quite you, though. You but better. Is [player_name] the Best really that much better? More importantly, will he be the one?"
+                    $ tbRel =+ 1
+                "Golden Boy" if GBRoute == "Yes":
+                    "Your mind is filled with the thoughts of your rival, your enemy, and maybe your last hope. Would he come to save you? Would he miss you? Why couldn't he be the one with you here?"
+                    $ gbRel =+ 1
+            n "You are unsure of what the morning will bring, but you suppose you'll have to be prepared whether you want to be or not."
+            jump Day2
+
+>>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
 label ScorchingEnd1:
     scene bg personalRoom
     play music "audio/ScorchingEnd1.wav" volume 0.25
@@ -323,7 +386,11 @@ label ScorchingEnd1:
 
     return
 
+<<<<<<< HEAD
 label InvestigateRoom:
+=======
+label InvestigateSeam:
+>>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
     "THIS ROUTE IS UNDER CONSTRUCTION"
     jump NightChoice1
 
@@ -401,6 +468,7 @@ label TalktoTB:
             jump NightChoice1
             
 label FollowCD:
+<<<<<<< HEAD
     scene bg personalHallway
     n "As you and the others make your way into the hallway lined with doors, you follow closely behind the Cloaked Dagger."
     show c_neutral with dissolve
@@ -469,10 +537,15 @@ label FollowCD:
     cd "Shall we reconvene at a later time and a different... location?"
     hide c_talking
     n "You return to the hallway you came from, leaving the Cloaked Dagger behind in the Invention room."
+=======
+    #scene bg
+    "UNDER CONSTRUCTION"
+>>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
 
     jump Night1Choice
 
 label FollowBG:
+<<<<<<< HEAD
     scene bg personalHallway
     n "Sometimes it's easier to stick to what you know, especially when you know so, so little."
     show s_neutral
@@ -524,6 +597,10 @@ label FollowBG:
     n "Well, it certainly meant... something."
     n "You talk a bit more about the circumstances at hand and your shared past, but eventually the Bodyguard takes his leave and slips inside his room."
     n "Returning to the main chamber, you can't help but wonder what the others think is going on."
+=======
+    #scene bg
+    "UNDER CONSTRUCTION"
+>>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
 
     jump Night1Choice
 
@@ -533,6 +610,7 @@ label FollowKFC:
 
     jump Night1Choice
 
+<<<<<<< HEAD
 label CallitaNight:
             scene bg personalRoom with dissolve
             p "...What the fuck"
@@ -753,3 +831,7 @@ label TBInventionScene:
     return
 
     #test
+=======
+label Day2:
+    scene bg personalroom
+>>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
