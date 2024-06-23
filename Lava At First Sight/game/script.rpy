@@ -786,7 +786,7 @@ label TheBestRouteDay2:
     n "Regret hits you like a truck, as you already feel dread in the face of what you must do."
     n "The heavy knocks continue as you slowly get dressed and get up to open the door."
     scene bg personalHallway with dissolve
-    n "As you do so, you swing it open quickly and are met with a fist just as swift, originally aimed for the door but landing square on your face. That bastard [player_name] The Best hit you!"
+    n "As you do so, you swing it open quickly and are met with a fist just as swift, originally aimed for the door but landing square on your face. That bastard [player_name] the Best hit you!"
     show a_neutral
     menu HitReaction:
         n "How do you react?"
@@ -821,6 +821,12 @@ label TheBestRouteDay2:
             jump TBInventionScene
         "<Pretend to be more hurt than you actually are>":
             $ tbRel =+ 2
+            n "You theatrically crash to the ground, holding a hand to your face where [player_name] the Best's fist landed. Masquerading a horrible pain, you writhe on the ground dramatically."
+            n "[player_name] the Best's expression shifts to one of horror, as they temporarily regard their own fist with fear of their heretofore unknown power."
+            n "[player_name] the Best quickly rushes to help you, kneeling on the ground and trying to get a look at your face."
+            hide a_neutral
+            show a_talking
+			tb "[player_name] you really ARE weak, aren't you. Despite how mighty my punches can be, I thought you were made of stronger stuff than that."
             hide a_neutral
             n "UNDER CONSTRUCTION."
             jump TBInventionScene
@@ -831,6 +837,7 @@ label TBInventionScene:
     return
 
     #test
+
 =======
 label Day2:
     scene bg personalroom
