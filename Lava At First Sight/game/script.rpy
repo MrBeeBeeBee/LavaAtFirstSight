@@ -9,6 +9,14 @@ define uk = Character("???")
 
 #backgrounds
 image bg island = "bg island day.png"
+image bg islandnight = "bg island night.png"
+image bg volcanoday = "bg volcanoChamber Day.png"
+image bg volcanonight = "bg volcanoChamber Night.png"
+image bg volcanosunset = "bg volcanoChamber sunset.png"
+image bg volcanoerupt = "bg island nightEruption.png"
+image bg beachday = "bg beachfront day.png"
+image bg news = "bg news.png"
+image bg cavern = "bg volcanoCavern.png"
 
 #characters
 image a_neutral = "ardbert neutral.png"
@@ -31,7 +39,7 @@ default tbRel = 1
 label start:
    # okay so add bg island.jpg or .png  to images directory
    scene bg island 
-   # play music "audio/Test.wav"
+   play music "audio/Test.wav" volume 0.5
 
    # pre-establish the lore(TM)
    n "You can see it in the distance, at first just a little spec on the horizon but now fully coming into view-- The Island."
@@ -56,7 +64,6 @@ label start:
 
    n "You're now nearly there. Thankfully, the anonymous note said it would be easy to slip inside Golden Boy's liar within the volcano itself, giving you plenty to lay a trap to ruin his day."
    n "Your boat finally reaches shore... but something in your gut is urging you to reconsider. If you want to turn back, something tells you that now is your only chance."
-  
    menu StayorGo:
     p "Do I leave?"
 
@@ -69,45 +76,42 @@ label BadEnd:
         n "You stare at the volcano for a long while, weighing your options."
         p "Yeah...yeah no I think I'll pass on this one."
         "ONE WEEK LATER"
-        "{INSERT HOW THE VILLIANS DIED}"
+        
+        scene bg news with dissolve
         p "Holy shit..."
-        n "Things are about to be a lot different now... but you can't help but wonder, who gave you that note? What had happened if you had stayed? You suppose you'll never truly know."
+        "They bodies of four known villians were found in the volcanic ruins of Hot-Hot-Romantic-Summer-Isalnd-Firey-Passion Island, informally known as Jenny Island."
+        "The Bodyguard, [player_name] the Best, The Key Frame Crusader, and the Cloaked Dagger were found early this morning. Local authorities have stated they are still looking for the culprit, and what this means for the city at large."
+        n "Things are about to be a lot different now... but you can help but wonder, who gave you that note? What had happened if you had stayed? You suppose you will never truly know."
         ".:. Bad Ending."
         return 
 
 label Day1:
-        #add volcanointerior.jpg or .png to images directory
-        #scene bg cavern
-        #with dissolve
-        
-         n "Eventually, you make your way through the island's greenery and arrive at the entrance of the volcano."
-         n "As the note suggested, the opening wasn't hard to find. There was some cover, but you are the greatest supervillian in the area, so it's not surprising you so easily detected the hidden cavernous entrance."
-         n "As you enter, carefully walking forward, you see a door just up ahead in the cavern."
-         p "Bingo."
-         n "You begin heading toward the door when-"
-         # Future bang noise (game/audio directory)? -> play sound "file ext"
-         "BANG!"
-         n "The cavern fills with the sounds of loud grinding noises as the cavern entrance is suddenly closed off by a large door."
-         p "NO NO NO NO"
+    scene bg cavern with dissolve
 
-         menu door1:
-            p "What do I do?"
+    n "Eventually, you make your way through the island's greenery and arrive at the entrance of the volcano."
+    n "As the note suggested, the opening wasn't hard to find. There was some cover, but you are the greatest supervillian in the area, so it's not surprising you so easily detected the hidden cavernous entrance."
+    n "As you enter, carefully walking forward, you see a door just up ahead in the cavern."
+    p "Bingo."
+    n "You begin heading toward the door when-"
+    # Future bang noise (game/audio directory)? -> play sound "file ext"
+    "BANG!"
+    n "The cavern fills with the sounds of loud grinding noises as the cavern entrance is suddenly closed off by a large door."
+    p "NO NO NO NO"
+    
+    menu door1:
+        p "What do I do?"
+        "<Head to door at the end of the cavern>":
+            jump CharacterIntros
+        "<Try to get the door open>":
+             n "There's no use. You left all your gizmos on the boat and all your gadgets at home. This door isn't going to budge without something more than your own two hands."
+             n "Certain there's no other options, you head to the door at the end of the cavern."
 
-            "<Head to door at the end of the cavern>":
-                    jump CharacterIntros
-
-            "<Try to get the door open>":
-                n "There's no use. You left all your gizmos on the boat and all your gadgets at home. This door isn't going to budge without something more than your own two hands."
-                n "Certain there's no other options, you head to the door at the end of the cavern."
-
-   
 label CharacterIntros:
+        scene bg volcanoday
+        with dissolve
         p "Wouldn't be the first time I walked into a trap... but what kind of trap is this supposed to be?"
         n "Ahead, you hear what sounds like... arguing? You can't make out where they are saying but it seems to be multiple voices on the other side of the door bickering."
         n "Determind to keep pushing forward, you make your way toward the other door. The door easily slides open as you step inside, attempting to be quiet in your attempt to continue inside."
-        
-        #scene bg volcanointeriorday
-        #with dissolve
 
         # Future bang noise (game/audio directory)? -> play sound "file ext"
         n "BANG!"
@@ -147,7 +151,7 @@ label CharacterIntros:
         hide c_talking
         show c_neutral
         n "The cloaked figure walks past you toward the toward, testing his correct hypothesis. You know this figure. It takes you a moment to place it, but when you do the memories rush back."
-        n "You competed against them--The Cloaked Dagger-- to earn a position as a henchman for famouse supervillian Charismata."
+        n "You competed against them--The Cloaked Dagger-- to earn a position as a henchman for famous supervillian Charismata."
         show c_talking
         hide c_neutral
         cd "Any suggestions on how we are meant to escape now, gentlemen?"
@@ -173,12 +177,12 @@ label CharacterIntros:
         p "What do you mean?"
         hide s_neutral
         show s_talking
-        bg "Look around. All four of us came here because of a note given to us. All four of us are villians. It's simple."
+        bg "Look around. All five of us came here because of a note given to us. All fivr of us are villians. It's simple."
         hide s_talking
 
         #talking to KFC
         p "Four?"
-        n "you notice now the fourth among you, a rather stunning individual with long, flowing hair green hair."
+        n "you notice now the fifth among you, a rather stunning individual with long, flowing green hair."
         show m_talking at left
         with dissolve
         kfc "Woah woah woah, hold on I'm not a 'villian'"
@@ -193,6 +197,7 @@ label CharacterIntros:
         hide m_neutral at left
         show m_talking 
         kfc "Blah blah blah semantics. It's complicated."
+        hide m_talking
 
         menu:
             n "Arguing begins amongst them, the same bickering you had heard before entering in the door."
@@ -208,21 +213,97 @@ label CharacterIntros:
                 $ tbRel =- 1
                 jump CavernDay1
 
-
 label CavernDay1:
          n "Before anyone has time to answer, a voice rings out from the PA system that of course this volcano happens to have."
+         n "Unlike all of the voices and faces before, this voice is... unrecognizable. It was distorted beyond recognition, the words barely distinguishable amidst the static."
+         uk "Congratulations, my friends."
+         uk "As you may have guessed, you have all been brought here under what one might call, false pretense."
+         uk "I'm sorry to have to tell you this, but this volcano is set to explode in three days. Which means that should you not manage to escape, you'll be burnt to ash."
+         n "Well that's... lovely."
+         uk "But! I do have good news."
+         p "Oh yay, good news."
+         uk "I can hear you, you know. Like I can actively hear you being sarcastic."
+         p "No?"
+         uk "What do you mean no? I can literally- You know what? Nevermind."
+         uk "You have three days to make a love connection with one another. If you can convince me you're being authentic, then I will free you before the volcano explodes."
+         n "Everyone goes quiet. What? A love connection? Three days? Your head hurts."
+         
+         menu:
+            "<You sick fuck>":
+                uk "I'm sorry...I'm doing what I must."
+                jump CavernSunset1
+            "<Stay Silent>":
+                jump CavernSunset1
+
+label CavernSunset1:
+    scene bg volcanosunset
+    with dissolve
+
+    n "As quickly as the voice came, it went. For a moment, all is quiet throughout the volcano."
+    "BANG BANG BANG"
+    show a_talking with dissolve
+    tb "LET ME OUT. LET ME THE FUCK OUT OF HERE. FUCKING SHIT BITCH."
+    hide a_talking
+    n "Good thing he didn't overreact"
+    n "You turn away from %(player_name)s banging on the metal doors to the Bodyguard. The taller man only looks back to you a moment before leaving."
+    n "You notice then that him, the Key Frame Crusader, and the Cloaked Dagger were all heading to rooms built into the central chamber."
+    n "Whoever your host is, at least they were generous enough to give you beds."
+    n "Still, even as you approach your own quarters, you don't feel capable of rest just yet."
+    jump Night1Choice
 
 
+label Night1Choice:
+    scene bg volcanonight
+    define visited = set()
 
+    menu NightChoice1:
 
+        set visited
+        n "What will you do?"
 
+        # Scorching End 1
+        "<Go Straight to Bed>":
+            jump ScorchingEnd1
+        "<Talk to [player_name] the Best>":
+            jump TalktoTB
+        "<Follow the Cloaked Dagger>":
+            jump FollowCD
+        "<Follow the Bodyguard>":
+            jump FollowBG
+        "<Follow the Key Frame Crusader>":
+            jump FollowKFC
+        #secret ending start
+        "<Investigate the seam in the wall>":
+            jump InvestigateSeam
 
-       
-        #show casper neutral
-        #with dissolve
+label ScorchingEnd1:
+    scene bg volcanoerupt with dissolve
 
-        #show shaun neutral
-        #with dissolve
+label InvestigateSeam:
+    "THIS ROUTE IS UNDER CONSTRUCTION"
+    jump NightChoice1
 
-        #show marcus neutral
-        #with dissolve
+label TalktoTB:
+    scene bg volcanonight
+    "UNDER CONSTRUCTION"
+
+    jump Night1Choice
+
+label FollowCD:
+    #scene bg
+    "UNDER CONSTRUCTION"
+
+    jump Night1Choice
+
+label FollowBG:
+    #scene bg
+    "UNDER CONSTRUCTION"
+
+    jump Night1Choice
+
+label FollowKFC:
+    #scene bg
+    "UNDER CONSTRUCTION"
+
+    jump Night1Choice
+
