@@ -2,7 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 29: Tab characters are not allowed in Ren'Py scripts.
+File "game/script.rpy", line 714: Line is indented, but the preceding say menuitem statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    "<Berate [player_name] the Best for hitting you>":
+    ^
 
 Ren'Py Version: Ren'Py 8.2.3.24061702
-Sat Jun 22 12:49:59 2024
+Sun Jun 23 13:13:17 2024

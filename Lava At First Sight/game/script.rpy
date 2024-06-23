@@ -66,7 +66,7 @@ label start:
      $ player_name="Susan"
      #checking
 
-   n "You're now nearly there. Thankfully, the anonymous note said it would be easy to slip inside Golden Boy's liar within the volcano itself, giving you plenty to lay a trap to ruin his day."
+   n "You're now nearly there. Thankfully, the anonymous note said it would be easy to slip inside Golden Boy's lair within the volcano itself, giving you plenty of time to lay a trap and ruin his day."
    n "Your boat finally reaches shore... but something in your gut is urging you to reconsider. If you want to turn back, something tells you that now is your only chance."
    menu StayorGo:
     p "Do I leave?"
@@ -115,7 +115,7 @@ label CharacterIntros:
         with dissolve
         p "Wouldn't be the first time I walked into a trap... but what kind of trap is this supposed to be?"
         n "Ahead, you hear what sounds like... arguing? You can't make out where they are saying but it seems to be multiple voices on the other side of the door bickering."
-        n "Determind to keep pushing forward, you make your way towards the other door. The door easily slides open as you step inside, attempting to be quiet as you continue inside."
+        n "Determined to keep pushing forward, you make your way towards the other door. The door easily slides open as you step inside, attempting to be quiet as you continue inside."
 
         # Future bang noise (game/audio directory)? -> play sound "file ext"
         n "BANG!"
@@ -170,8 +170,8 @@ label CharacterIntros:
         bg "%(player_name)s? Is that you?"
         hide s_talking
         show s_neutral
-        n "Your childhood friend. Shaun. He goes by the Bodyguard now, last you heard. You can't remember the last time you spoke to one another."
-        p "Bodyguard? What's going on here?"
+        n "Your childhood friend. Shaun. He goes by The Bodyguard now, last you heard. You can't remember the last time you spoke to one another."
+        p "The Bodyguard? What's going on here?"
         hide s_neutral
         show s_talking
         bg "I'm... not sure. "
@@ -221,7 +221,7 @@ label CavernDay1:
          n "Before anyone has time to answer, a voice rings out from the PA system that of course this volcano happens to have."
          n "Unlike all of the voices and faces before, this voice is... unrecognizable. It was distorted beyond recognition, the words barely distinguishable amidst the static."
          uk "Congratulations, my friends."
-         uk "As you may have guessed, you have all been brought here under what one might call, false pretense."
+         uk "As you may have guessed, you have all been brought here under what one might call false pretenses."
          uk "I'm sorry to have to tell you this, but this volcano is set to explode in three days. Which means that should you not manage to escape, you'll be burnt to ash."
          n "Well that's... lovely."
          uk "But! I do have good news."
@@ -249,7 +249,7 @@ label CavernSunset1:
     tb "LET ME OUT. LET ME THE FUCK OUT OF HERE. FUCKING SHIT BITCH."
     hide a_talking
     n "Good thing he didn't overreact"
-    n "You turn away from %(player_name)s banging on the metal doors to the Bodyguard. The taller man only looks back to you a moment before leaving."
+    n "You turn away from %(player_name)s the Best banging on the metal doors to the Bodyguard. The taller man only looks back to you for a moment before leaving."
     n "You notice then that him, the Key Frame Crusader, and the Cloaked Dagger were all heading to rooms built into the central chamber."
     n "Whoever your host is, at least they were generous enough to give you beds."
     n "Still, even as you approach your own quarters, you don't feel capable of rest just yet."
@@ -286,10 +286,10 @@ label Night1Choice:
 
             jump FollowKFC
         #secret ending start
-        "<Investigate the seam in the wall>" if visitconfirm == "No":
+        "<Investigate the room?>" if visitconfirm == "No":
             $ visitconfirm = "Yes"
             $ GBRoute = "Yes"
-            jump InvestigateSeam
+            jump InvestigateRoom
 
         #Finish Day 1
         "<Call it a night>" if visitconfirm == "Yes":
@@ -323,7 +323,7 @@ label ScorchingEnd1:
 
     return
 
-label InvestigateSeam:
+label InvestigateRoom:
     "THIS ROUTE IS UNDER CONSTRUCTION"
     jump NightChoice1
 
@@ -685,6 +685,7 @@ label CloakedDaggerRouteDay2:
     return
 
 label BodyGuardRouteDay2:
+    #test
     "ROUTE UNDER CONSTRUCTION"
     return
 
@@ -693,4 +694,62 @@ label KFCDay2:
     return
 
 label TheBestRouteDay2:
+    scene bg personalRoom with dissolve
+    n "Your unconscious mind races as you dream of days before your arrival here on the island. You remember your days as a fledgeling villain, fresh off your henchmanship under Charismata."
+    n "You began by committing the smallest crimes possible. Shoplifting from supermarkets, stealing plant cuttings, literally taking candy from babies, the works."
+    n "You've come a long way since then. By now, though the scope of your crimes hasn't increased too much, you're finally gaining some serious notoriety and fame in Sunnydayle Valley."
+    n "Unfortunately for you... That also comes with some downsides."
+    n "BANG! BANG! BANG!"
+    n "You're rudely woken up by a series of incredibly loud knocks at your door, accompanied by an unfortunately immediately recognizeable shrill voice."
+    show a_talking
+    tb "GET OUT HERE THIS INSTANT [player_name]! I KNOW YOU'RE USED TO SLACKING OFF BUT WE HAVE VITAL WORK TO DO!"
+    hide a_talking
+    show a_neutral
+    n "Regret hits you like a truck, as you already feel dread in the face of what you must do."
+    n "The heavy knocks continue as you slowly get dressed and get up to open the door."
+    scene bg personalHallway with dissolve
+    n "As you do so, you swing it open quickly and are met with a fist just as swift, originally aimed for the door but landing square on your face. That bastard [player_name] The Best hit you!"
+    show a_neutral
+    menu HitReaction:
+        n "How do you react?"
+        "<Berate [player_name] the Best for hitting you>":
+            p "What the hell, man? I just woke up! Are you seriously so impatient you'd deck me for waking up a little late? News flash, this is KIND OF a stressful situation here! Sorry if I want to sleep in a little."
+            n "[player_name] the Best looks taken aback, like they didn't expect such a harsh reaction from you, but that doesn't last very long."
+            hide a_neutral
+            show a_talking
+            tb "If you're so keenly aware of our predicament then you need to act like it! My life is at stake here and I certainly won't have you holding me back from saving it!"
+            tb "Now, are you coming along or not?"
+            hide a_talking
+            show a_neutral
+            n "As much as you want to speak up against the annoyance, you decide it's too early in the morning to keep barking up this tree."
+            n "You begrudgingly follow [player_name] the Best as he storms off without so much as another word."
+            jump TBInventionScene
+        "<Flirt with [player_name] the Best>":
+            $ tbRel =+ 1
+            p "Listen, if you wanted to hit on me you could have just done so. No need to be so physical, handsome."
+            n "[player_name] the Best is clearly taken aback by your brazen flirting, scanning your expression. Taking a moment to compose himself, he smirks at you before leaning in close and whispering to you."
+            hide a_neutral
+            show a_talking
+            tb "You really are committed to this performance, aren't you? Not that I blame you, I'd want to be anyone but yourself too if I were you."
+            hide a_talking
+            show a_neutral
+            n "[player_name] the Best takes a moment to adjust their uniform and pull at their collar. It seems that despite their words, you had at least somewhat of an effect on them."
+            hide a_neutral
+            show a_talking
+            tb "Well, are you ready? We must begin our work at once, lest you hold me and my brilliance back and we fail to invent ourselves a way out of here."
+            hide a_talking
+            n "[player_name] the Best quickly skitters away, seemingly wanting to get to work as quick as possible."
+            n "You follow with a smirk on your face. Maybe this won't be the worst thing in the world."
+            jump TBInventionScene
+        "<Pretend to be more hurt than you actually are>":
+            $ tbRel =+ 2
+            hide a_neutral
+            n "UNDER CONSTRUCTION."
+            jump TBInventionScene
+
+label TBInventionScene:
+    scene bg volcanoday with dissolve
+    n "UNDER CONSTRUCTION"
+    return
+
     #test
