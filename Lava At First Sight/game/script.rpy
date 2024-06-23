@@ -19,6 +19,9 @@ image bg news = "bg news.png"
 image bg cavern = "bg volcanoCavern.png"
 image bg personalRoom = "bgb personalRoom.png"
 image bg personalHallway = "bg personalHallway.png"
+image bg inventionRoom = "bg inventionRoom.png"
+image bg kitchenDay = "bg kitchen.png"
+image bg kitchenNight = "bg kitchen night.png"
 
 #characters
 image a_neutral = "ardbert neutral.png"
@@ -826,16 +829,118 @@ label TheBestRouteDay2:
             n "[player_name] the Best quickly rushes to help you, kneeling on the ground and trying to get a look at your face."
             hide a_neutral
             show a_talking
-			tb "[player_name] you really ARE weak, aren't you. Despite how mighty my punches can be, I thought you were made of stronger stuff than that."
+            tb "[player_name] you really ARE weak, aren't you. Despite how mighty my punches can be, I thought you were made of stronger stuff than that."
+            hide a_talking
+            show a_neutral
+            n "[player_name] the Best reaches out a hand to help you up. Surprised, you take it, letting yourself rise via [player_name] the Best's steady hand."
+            p "Huh, I didn't take you for the charitable type."
             hide a_neutral
+            show a_talking
+            tb "Well don't get too used to it. We've already wasted far too much time and I just wanted to make sure you weren't overwhelmed by my devastating blows."
+            hide a_talking
+            show a_neutral
+            n "Before you can get out any sort of response, [player_name] the Best is already leading you by the hand towards the invention room."
             n "UNDER CONSTRUCTION."
             jump TBInventionScene
 
 label TBInventionScene:
-    scene bg volcanoday with dissolve
-    n "UNDER CONSTRUCTION"
-    return
+    scene bg inventionRoom with dissolve
+    n "The moment the two of you set foot in the invention room, you're both blown away by the facilities within. It's not the most high-tech to begin with, but one thing catches your eye."
+    show a_talking
+    tb "Oh my heavens, there's a crafting table!"
+    hide a_talking
+    show a_neutral
+    p "Holy fuck it's a crafting table!"
+    n "Yes, a crafting table. Inspired by the incredibly popular video game Cavernbuild, 3D printing technology had soared in recent years, culminating in the most expensive yet easiest way to make whatever your mind desired."
+    n "With the right know-how, dedicated time, and even a vague idea of what you want to make, just about anything was possible."
+    n "If you both weren't so enamoured, you might even begin to wonder who could afford to have such a thing on a deserted island."
+    n "Grandiose in all ways, [player_name] the Best immediately pipes up with an equally grand suggestion."
+    hide a_neutral
+    show a_talking
+    tb "A flying machine! Yes we absolutely must! A great escape through the volcano's ceiling! A daring endeavor for a daring villain such as myself."
+    hide a_talking
+    show a_neutral
+    n "If it weren't for the tech in front of you making that idea possible, you usually would have shut that down, but you'd be lying if you weren't interested in going big with this one."
+    p "You know what? Let's go for it. It'll have to carry all five of us, but I actually think it's possible between the two of us."
+    n "[player_name] the Best looks at you shocked, having fully expected you to argue the idea down."
+    hide a_neutral
+    show a_talking
+    tb "Well then, let's get to work, shall we? Don't worry, with me leading the way, everything is sure to go smoothly."
+    hide a_talking
+    n "The two of you get to work immediately, drafting up schematics to generate each part you'll need for the flying machine. The excitement in the air is palpable, and for a moment, you forget your grievances with [player_name] the Best."
+    n "..."
+    n "At least, you were able to for a little while."
+    show a_talking
+    tb "You know, when you're the best, you really are the best. Oh wait, you wouldn't really know that, would you? Your inventions have always paled in comparison to mine, after all."
+    n "[player_name] the Best keeps jabbering on and on about his \"accomplishments\" while you try to keep your head in any sort of productive mood. It's not working too well, and you're getting to the point where you need to say SOMETHING."
+    menu SpeakUp:
+        n "What do you say?"
+        "My inventions have held their own more than a few times, you know.":
+            $ tbRel =+ 2
+            hide a_talking
+            show a_neutral
+            n "[player_name] the Best opens his mouth to object, but you keep going."
+            p "Like that one time you stole hundreds of sub sandwiches from Shrublix. I saw that and thought, \"Yeah, I can steal a few\" I fed myself for weeks!"
+            p "Or that other time you convinced Belle Thorpe she had Dyslexia. Well guess who went and convinced her to talk about it on Didney Channel?"
+            n "[player_name] the Best's mouth opens wider with each and every example you provide."
+            p "You know what? I think that every time I see you do something interesting, I just have to take a crack at it."
+            p "You always seem to spur me to do better than I did before. I know we fight a lot, but I have to say, I appreciate the calmer moments."
+            n "[player_name] the Best's jaw is basically on the floor at this point, and he sputters to respond."
+            hide a_neutral
+            show a_talking
+            tb "Oh- oh yeah? Well, I'm glad that you recognize I'm someone you're always going to have to look up to. You know, as your superior and all."
+            hide a_talking
+            show a_neutral
+            n "[player_name] the Best turns away to hide his face, mumbling something about \"Of COURSE his inventions inspire the masses\"."
+            n "You can't help but notice the obvious blushing he tries to hide. Maybe it is a LITTLE fun to tease him."
 
+            jump TBInventionTest
+        "Absolutely, you've always been the better inventor between the two of us, after all.":
+            $ tbRel =+ 1
+            hide a_talking
+            show a_neutral
+            n "You don't even need to look in [player_name] the Best's direction to know he's shocked, as you hear the pen in his hand drop to the floor."
+            n "You turn to see [player_name] the Best staring intently at you as if he's trying to bore into your head and figure out what you're thinking."
+            p "I really do think you're incredible. I mean, stealing hundreds of sub sandwiches from Shrublix? How'd you manage that?"
+            p "You literally stole Christmas! I remember you smelled like gingerbread until April. And didn't you convinve Belle Thorp she had dyslexia? Amazing work there, I couldn't even get an interview with her!"
+            n "[player_name] the Best's expression becomes more incredulous with each word of praise you utter, before his eyes eventually narrow."
+            hide a_neutral
+            show a_talking
+            tb "You know, you don't have to be such a sarcastic asshole all the time. I get we don't get along, but try to have some decorum."
+            hide a_talking
+            show a_neutral
+            n "[player_name] the Best turns away to resume working, but you can see the corner of his mouth curl up in what seems to be a smile, with his cheeks blushing just a little."
+            n "Perhaps the praise meant more to him than you realized."
+            
+            jump TBInventionTest
+        "You've literally never invented a single thing better than my worst invention.":
+            $ tbRel =- 1
+            hide a_talking
+            show a_neutral
+            n "[player_name] the Best looks at you incredulously. A flurry of fury, confusion, and embarrassment brews within him until he unleashes what he would consider hell on you."
+            hide a_neutral
+            show a_talking
+            tb "EXCUUUUUUUUUUUUUSE MEEEEEEEEEE?!"
+            tb "Have you lost your mind completely? Have you forgotten the Shrublix debaucle where I successfully lifted several HUNDRED sub sandwiches compared to your measly twelve?"
+            tb "Are we going to ignore when you dressed like the grinch while I LITERALLY stole Christmas?"
+            tb "And lest we forget about the time I convinced Belle Thorp that she had Dyslexia! You couldn't even get an interview with her!"
+            hide a_talking
+            show a_neutral
+            n "As much as these incidents are kind of right, they're not the whole truth."
+            p "And every one of those cases where you \"succeeded\" backfired every time! You gained nothing! Villainy for villainy's sake alone is what those were."p
+            p "The sandwiches expired before you could eat even two!"
+            p "You smelled like gingerbread well into April AND couldn't get rid of all those decorations for YEARS!"
+            p "You didn't even get credit for Belle Thorp, she went on Dindey Channel and got celebrated for it!"
+            p "Face it, every \"success\" you've had has crashed down on you and left you even worse off."
+            n "An air of silence permeates the room, as a thick tension fills the space between you. You kind of feel bad about going so hard on him."
+            hide a_neutral
+            show a_talking
+            n "[player_name] the Best tries to object, but comes up short. Instead, they dejectedly mumble under their breath, and the two of you continue working on the flying machine in silence."
+            
+            jump TBInventionTest
+
+label TBInventionTest:
+    return
     #test
 
 =======
