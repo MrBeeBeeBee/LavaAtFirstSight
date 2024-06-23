@@ -19,10 +19,17 @@ image bg beachday = "bg beachfront day.png"
 image bg news = "bg news.png"
 image bg cavern = "bg volcanoCavern.png"
 image bg personalRoom = "bgb personalRoom.png"
+image bg roomNight = "bgb personalRoom night.png"
 image bg personalHallway = "bg personalHallway.png"
 image bg inventionRoom = "bg inventionRoom.png"
 image bg kitchenDay = "bg kitchen.png"
 image bg kitchenNight = "bg kitchen night.png"
+<<<<<<< HEAD
+=======
+image bg doorsDay = "bg metalDoors days.png"
+image bg doorsNight = "bg metalDoors night.png"
+image bg secRoom = "bg securityRoom.png"
+>>>>>>> main
 
 #characters
 image a_neutral = "ardbert neutral.png"
@@ -48,9 +55,11 @@ default gbRel = 0
 >>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
 
 label start:
+   stop music
+   play music "audio/Happy.mp3"
+
    # okay so add bg island.jpg or .png  to images directory
    scene bg island 
-   # play music "audio/Test.wav" volume 0.5
 
    # pre-establish the lore(TM)
    n "You can see it in the distance, at first just a little spec on the horizon but now fully coming into view-- The Island."
@@ -84,6 +93,8 @@ label start:
         jump Day1
     
 label BadEnd:
+        stop music
+        play music "audio/Sad.mp3"
         n "You stare at the volcano for a long while, weighing your options."
         p "Yeah...yeah no I think I'll pass on this one."
         "ONE WEEK LATER"
@@ -98,6 +109,8 @@ label BadEnd:
 
 label Day1:
     scene bg cavern with dissolve
+    stop music
+    play music "audio/Test.wav"
 
     n "Eventually, you make your way through the island's greenery and arrive at the entrance of the volcano."
     n "As the note suggested, the opening wasn't hard to find. There was some cover, but you are the greatest supervillian in the area, so it's not surprising you so easily detected the hidden cavernous entrance."
@@ -118,21 +131,26 @@ label Day1:
              n "Certain there's no other options, you head to the door at the end of the cavern."
 
 label CharacterIntros:
-        scene bg volcanoday
+        scene bg doorsDay
         with dissolve
         p "Wouldn't be the first time I walked into a trap... but what kind of trap is this supposed to be?"
         n "Ahead, you hear what sounds like... arguing? You can't make out where they are saying but it seems to be multiple voices on the other side of the door bickering."
+<<<<<<< HEAD
 <<<<<<< HEAD
         n "Determined to keep pushing forward, you make your way towards the other door. The door easily slides open as you step inside, attempting to be quiet as you continue inside."
 =======
         n "Determind to keep pushing forward, you make your way towards the other door. The door easily slides open as you step inside, attempting to be quiet as you continue inside."
 >>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
+=======
+        n "Determined to keep pushing forward, you make your way towards the other door. The door easily slides open as you step inside, attempting to be quiet as you continue in."
+>>>>>>> main
 
         # Future bang noise (game/audio directory)? -> play sound "file ext"
         n "BANG!"
         p "Shit."
         n "The noise of the door locking behind you echoes throughout, alerting the group of people ahead of your presence."
         
+        scene bg volcanoday
         #talking to The Best
         show a_neutral
         with dissolve
@@ -182,12 +200,17 @@ label CharacterIntros:
         hide s_talking
         show s_neutral
 <<<<<<< HEAD
+<<<<<<< HEAD
         n "Your childhood friend. Shaun. He goes by The Bodyguard now, last you heard. You can't remember the last time you spoke to one another."
         p "The Bodyguard? What's going on here?"
 =======
         n "Your childhood friend. Shaun. He goes by the Bodyguard now, last you heard. You can't remember the last time you spoke to one another."
         p "Bodyguard? What's going on here?"
 >>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
+=======
+        n "Your childhood friend. Shaun. He goes by The Bodyguard now, last you heard. You can't remember the last time you spoke to one another."
+        p "The Bodyguard? What's going on here?"
+>>>>>>> main
         hide s_neutral
         show s_talking
         bg "I'm... not sure. "
@@ -235,13 +258,17 @@ label CharacterIntros:
 
 label CavernDay1:
          n "Before anyone has time to answer, a voice rings out from the PA system that of course this volcano happens to have."
-         n "Unlike all of the voices and faces before, this voice is... unrecognizable. It was distorted beyond recognition, the words barely distinguishable amidst the static."
+         n "Unlike all of the voices and faces before, this voice is... unrecognizable. It was distorted, the words barely distinguishable amidst the static."
          uk "Congratulations, my friends."
+<<<<<<< HEAD
 <<<<<<< HEAD
          uk "As you may have guessed, you have all been brought here under what one might call false pretenses."
 =======
          uk "As you may have guessed, you have all been brought here under what one might call, false pretense."
 >>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
+=======
+         uk "As you may have guessed, you have all been brought here under what one might call false pretenses."
+>>>>>>> main
          uk "I'm sorry to have to tell you this, but this volcano is set to explode in three days. Which means that should you not manage to escape, you'll be burnt to ash."
          n "Well that's... lovely."
          uk "But! I do have good news."
@@ -270,16 +297,23 @@ label CavernSunset1:
     hide a_talking
     n "Good thing he didn't overreact"
 <<<<<<< HEAD
+<<<<<<< HEAD
     n "You turn away from %(player_name)s the Best banging on the metal doors to the Bodyguard. The taller man only looks back to you for a moment before leaving."
 =======
     n "You turn away from %(player_name)s banging on the metal doors to the Bodyguard. The taller man only looks back to you a moment before leaving."
 >>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
+=======
+
+    n "You turn away from %(player_name)s the Best banging on the metal doors to the Bodyguard. The taller man only looks back to you for a moment before leaving."
+>>>>>>> main
     n "You notice then that him, the Key Frame Crusader, and the Cloaked Dagger were all heading to rooms built into the central chamber."
     n "Whoever your host is, at least they were generous enough to give you beds."
     n "Still, even as you approach your own quarters, you don't feel capable of rest just yet."
     jump Night1Choice
 
 label Night1Choice:
+    stop music
+    play music "audio/Emotional.mp3"
     scene bg volcanonight
     define visited = set()
     default visitconfirm = "No"
@@ -291,18 +325,24 @@ label Night1Choice:
         # Scorching End 1
         "<Go Straight to Bed>" if visitconfirm == "No":
             scene bg personalRoom
-
             jump ScorchingEnd1
+
         "<Talk to [player_name] the Best>":
             $ visitconfirm = "Yes"
             jump TalktoTB
+
         "<Follow the Cloaked Dagger>":
             $ visitconfirm = "Yes"
 <<<<<<< HEAD
+<<<<<<< HEAD
         
+=======
+>>>>>>> main
             jump FollowCD
+
         "<Follow the Bodyguard>":
             $ visitconfirm = "Yes"
+<<<<<<< HEAD
 =======
             scene bg personalHallway
 
@@ -312,12 +352,16 @@ label Night1Choice:
             scene bg personalHallway
 >>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
 
+=======
+            scene bg personalHallway
+>>>>>>> main
             jump FollowBG
+
         "<Follow the Key Frame Crusader>":
             $ visitconfirm = "Yes"
             scene bg personalHallway
-
             jump FollowKFC
+       
         #secret ending start
 <<<<<<< HEAD
         "<Investigate the room?>" if visitconfirm == "No":
@@ -337,6 +381,7 @@ label Night1Choice:
 
         #Finish Day 1
         "<Call it a night>" if visitconfirm == "Yes":
+<<<<<<< HEAD
             scene bg personalRoom
             p "...What the fuck"
             n "Your room is not quite what you expected. The dull room with a weirdly detailed rug, washed in shades of pinks, purples, and reds."
@@ -613,13 +658,17 @@ label FollowKFC:
     "UNDER CONSTRUCTION"
 
     jump Night1Choice
+=======
+            jump CallitaNight
+>>>>>>> main
 
 <<<<<<< HEAD
 label CallitaNight:
-            scene bg personalRoom with dissolve
+            scene bg roomNight with dissolve
             p "...What the fuck"
             n "Your room is not quite what you expected. The dull room with a weirdly detailed rug, washed in shades of pinks, purples, and reds."
             n "It wasn't exactly what you expected in a situation where you are functionally kidnapped, but that's not necessarily bad?"
+            play sound "audio/knock sound.mp3" volume 0.25
             "KNOCK KNOCK"
             n "The knocking noise on your door catches your attention"
             bg "[player_name], are you in there?"
@@ -760,6 +809,254 @@ label CallitaNight:
                  "<Key Frame Crusader>":
                     $ kfcRel =+ 1
                     jump KFCDay2
+           
+label ScorchingEnd1:
+    scene bg personalRoom
+    stop music
+    play music "audio/ScorchingEnd1.wav"
+
+    p "...What the fuck"
+    n "Your room is not quite what you expected. The dull room with a weirdly detailed rug, washed in shades of pinks, purples, and reds."
+    n "It wasn't exactly what you expected in a situation where you are functionally kidnapped, but that's not necessarily bad?"
+    n "You have trouble falling asleep, as if your body is urging you not to. Even still, you ignore it and eventually sleep takes you."
+    n "The following three days were... not good for you"
+    n "Having missed out on your initial chances for connection with your fellow villians, they paired off in the night without you."
+    n "[player_name] the Best and The Bodyguard eventually found a romantic connection, sharing a tender moment as they realize they both share a connection to you."
+    n "The Cloaked Dagger and Key Frame Crusader paired up by Day 2, at first out of necessity and convenience, but quickly discovered they did both share a surprising love connection."
+    n "The two couples are permitted to leave, but you are not."
+
+    scene bg volcanoerupt with dissolve
+
+    n "You die alone and burning."
+    n "Nobody will remember you"
+    n "Golden Boy never even knew who you were."
+    n "You have always been an obstacle and you were finally removed, proving your own lesser status."
+    n "Did it have to be this way?"
+    n "Was that the only way this could have ended?"
+
+    ".:. SCORCHING END 1"
+
+
+    return
+
+label InvestigateSeam:
+    "THIS ROUTE IS UNDER CONSTRUCTION"
+    jump NightChoice1
+
+label TalktoTB:
+    scene bg volcanonight
+
+    n "turning around again, you see [player_name] the Best still hammering on the wall and whailing."
+    show a_neutral with dissolve
+    p "Good to know he's still annoying as ever."
+    n "You move closer to him and once you're only a few steps away, he turns around frantically."
+    hide a_neutral 
+    show a_talking with dissolve
+    tb "YOU!"
+    hide a_talking
+    show a_neutral with dissolve
+    p "Me?"
+    hide a_neutral 
+    show a_talking with dissolve
+    tb "No I'm talking to the other [player_name] in the room with us. YES, I'm talking to you, dumbass."
+    hide a_talking
+    show a_neutral with dissolve
+    n "Rude"
+    hide a_neutral 
+    show a_talking with dissolve
+    tb "You are behind this all. I know it was you. You... you LURED me here. You knew I would want to find Golden Boy's lair and you LIED."
+    hide a_talking
+    show a_neutral with dissolve
+    menu:
+        "Wait, you got the same anonymous tip?":
+            n "He looks confused at you for a second, but eventually he nods."
+            hide a_neutral 
+            show a_talking with dissolve
+            tb "Yeah. It--YOU--said that I would find him here and that I would have the leg up because I was the only one who would know this."
+            hide a_talking
+            show a_neutral with dissolve
+            p "[player_name] the Best, you know I didn't do this. I'm just as trapped here as you."
+            tb "They seem skeptical, but are resigned to the fact that the choice is to either trust you or die"
+
+        "You are going crazy, I didn't send you anything.":
+            n "He looks at you skeptically, unbelieving."
+            hide a_neutral 
+            show a_talking with dissolve
+            tb "Mhm sure. Whatever you say, creep. Get me out of here. Now."
+            hide a_talking
+            show a_neutral with dissolve
+            p "I am not lying, I really didn't. I got an anonymous tip telling me this was Golden Boy's lair and I showed up. It said I was the only one who was being told this."
+            n "His disbelief slowly melts into something closer to apathy. He may have no choice but to believe you in order to survive."
+
+    tb "I'm going to bed"
+    hide a_talking
+    show a_neutral with dissolve
+    menu:
+        n "What do you say?"
+
+        "You're going to die here":
+            $ tbRel =- 1
+            n "Woah. Intense much?"
+            n "He flips you off as he leaves, returning to his own room."
+            hide a_neutral
+            n "Well, where to now?"
+            jump Night1Choice
+        "Goodnight, [player_name] the Best.":
+            $ tbRel =+ 1
+            n "He looks at you over his shoulder and gives a soft but confused smile."
+            hide a_neutral 
+            show a_talking with dissolve
+            tb "Goodnight, [player_name]"
+            hide a_talking
+            n "Well, where to now?"
+            jump Night1Choice
+        "<Stay Silent>":
+            hide a_neutral
+            n "He leaves standing alone in the central chamber of the volcano."
+            n "Well, where to now?"
+            jump Night1Choice
+            
+label FollowCD:
+    scene bg personalHallway with dissolve
+    n "As you and the others make your way into the hallway lined with doors, you follow closely behind the Cloaked Dagger."
+    show c_neutral with dissolve
+    n "Out of everyone, the cloaked figured seems to have the best head on his shoulders. They seem observant, if nothing else."
+
+    scene bg inventionRoom with dissolve
+    n "You follow him throughout the halls and through one of the doors, a large and open room full of shelves that contain various gizmos and gadgets."
+    n "As you explore the space, you turn to see the Cloaked Dagger staring at you with a masked expression."
+    p "Uh, can I help you?"
+    hide c_neutral
+    show c_talking
+    cd "No, not likely. Not yet, anyway."
+    hide c_talking
+    show c_neutral
+    p "That's so cryptic dude, what does that even mean?"
+    hide c_neutral
+    show c_talking
+    cd "Not sure yet."
+    cd "Whoever our gratious host is, they've left some things behind for us."
+    cd "Whose to say we can't use some of these things to escape?"
+    hide c_talking
+    show c_neutral
+    n "You gesture toward the sky-- toward the non-corporeal voice they had heard over the PA"
+    p "The man in the sky, as it seems."
+    hide c_neutral
+    show c_talking
+    cd "That's what they want us to think. Regardless, it's a good backup in case none of us can be convincing enough to pretend to fall in love in a few days."
+    hide c_talking
+    show c_neutral
+    p "Pretend? What if they figure it out?"
+    n "He shrugs, nonchalant as if this situation were not a cause for panic."
+    hide c_neutral
+    show c_talking
+    cd "Guess you'll have to figure out how to be a good actor these next few days."
+    hide c_talking
+    show c_neutral
+    menu:
+        "And you are a good actor?":
+            $ cdRel =+ 1
+            hide c_neutral
+            show c_talking
+            cd "Wouldn't you like to find out?"
+            hide c_talking
+        "I don't want to fake it. I want to fall in love.":
+            hide c_neutral
+            show c_talking
+            cd "How charming. Childish, but charming."
+            hide c_talking
+        "I don't want to fall in love at all. I'd rather die.":
+            $ cdRel =- 1
+            hide c_neutral
+            show c_talking
+            cd "You'll doom us. Or well, you'll doom yourself. I suppose that will make it easy for someone to be left behind."
+            hide c_talking
+            n "Oh, that's right- there's five of you. One of you is doomed to die."
+            n "Unless your kidnapper is surprisngly progressive in the realms of accepting polyamory."
+    show c_talking
+    cd "Regardless, this equipment may help us should we wish to pursue that."
+    hide c_talking
+    show c_neutral
+    n "As if both yours and the Cloaked Dagger's eyes were magnets, they were both drawn to the security camera in the corner of the room."
+    p "You seeing what I'm seeing?"
+    n "You can see the other nod in your peripheral."
+    hide c_neutral
+    show c_talking
+    cd "Shall we reconvene at a later time and a different... location?"
+    hide c_talking
+    n "You return to the hallway you came from, leaving the Cloaked Dagger behind in the Invention room."
+
+    #scene bg
+    "UNDER CONSTRUCTION"
+
+    jump Night1Choice
+
+label FollowBG:
+    scene bg personalHallway
+    stop music
+    play music "audio/Emotional.mp3"
+
+    n "Sometimes it's easier to stick to what you know, especially when you know so, so little."
+    show s_neutral
+    n "You follow your former friend down the hallway, letting the chord of connection you share pull you in the direction he walked."
+    n "He stops in front of a door, a small gold plaster on the door with the name 'The Bodyguard' written on it."
+    p "Are you okay?"
+    n "Hearing your voice, he turns around to give you his full attention."
+    hide s_neutral
+    show s_talking
+    bg "Ah. [player_name]. It's..."
+    hide s_talking
+    show s_neutral
+    p "Been a while? Yeah.  Yeah, I know."
+    n "There is a somber moment shared between you, standing in the hallway of your captor."
+    hide s_neutral
+    show s_talking
+    bg "Are you well? Other than uh, present circumstances?"
+    hide s_talking
+    show s_neutral
+    menu:
+        "I've been better":
+            n "He clears his throat awkwardly."
+            hide s_neutral
+            show s_talking
+            bg "Yeah, I get that."
+        "Never been better, other than present circumstances":
+            n "He gives a soft smile at that"
+            hide s_neutral
+            show s_talking
+            bg "I'm glad."
+            hide s_talking
+            show s_neutral
+            p "And you?"
+            hide s_neutral
+            show s_talking
+            bg "Oh you know, living the dream."
+        "I'll give you one guess":
+            $ bgRel =- 1
+            n "He opens his mouth to speak, but slowly closes it with a wince."
+            hide s_neutral
+            show s_talking
+            bg "I suppose that's fair."
+    n "You point at the plaque above his door."
+    p "Assigned rooms, then?"
+    hide s_neutral
+    show s_talking
+    bg "I guess so. Guess whoever it is planned for us to be spending a few nights here afterall."
+    hide s_talking
+    n "Well, it certainly meant... something."
+    n "You talk a bit more about the circumstances at hand and your shared past, but eventually the Bodyguard takes his leave and slips inside his room."
+    n "Returning to the main chamber, you can't help but wonder what the others think is going on."
+
+    #scene bg
+    "UNDER CONSTRUCTION"
+
+    jump Night1Choice
+
+label FollowKFC:
+    scene bg kitchenNight with dissolve
+    "UNDER CONSTRUCTION"
+
+    jump Night1Choice
 
 label CloakedDaggerRouteDay2:
     #test
@@ -776,6 +1073,7 @@ label KFCDay2:
     return
 
 label TheBestRouteDay2:
+<<<<<<< HEAD
     scene bg personalRoom with dissolve
     n "Your unconscious mind races as you dream of days before your arrival here on the island. You remember your days as a fledgeling villain, fresh off your henchmanship under Charismata."
     n "You began by committing the smallest crimes possible. Shoplifting from supermarkets, stealing plant cuttings, literally taking candy from babies, the works."
@@ -796,6 +1094,25 @@ label TheBestRouteDay2:
         n "How do you react?"
         "<Berate [player_name] the Best for hitting you>":
             p "What the hell, man? I just woke up! Are you seriously so impatient you'd deck me for waking up a little late? News flash, this is KIND OF a stressful situation here! Sorry if I want to sleep in a little."
+=======
+    play sound "audio/Motif SFX.mp3"
+    stop music
+    play music "Happy.mp3"
+    scene bg personalRoom with fade
+    n "BANG! BANG! BANG!"
+    n "You're rudely woken up by a series of incredibly loud knocks at your door, accompanied by an unfortunately immediately recognizeable shrill voice."
+    tb "GET OUT HERE THIS INSTANT [player_name]! I KNOW YOU'RE USED TO SLACKING OFF BUT WE HAVE VITAL WORK TO DO!"
+    n "Regret hits you like a truck, as you already feel dread in the face of what you must do."
+    n "The heavy knocks continue as you slowly get dressed and get up to open the door."
+    scene bg personalHallway with dissolve
+    show a_neutral
+    n "As you do so, you swing it open quickly and are met with a fist just as swift, originally aimed for the door but landing square on your face. That bastard [player_name] the Best hit you!"
+    menu HitReaction:
+        n "How do you react?"
+        "<Berate [player_name] the Best for hitting you>":
+            p "What the hell, man? I just woke up! Sorry if I want to sleep in a little, but it's not exactly lost on me this is a STRESSFUL SITUATION."
+            p "Jesus CHRIST, man."
+>>>>>>> main
             n "[player_name] the Best looks taken aback, like they didn't expect such a harsh reaction from you, but that doesn't last very long."
             hide a_neutral
             show a_talking
@@ -809,10 +1126,17 @@ label TheBestRouteDay2:
         "<Flirt with [player_name] the Best>":
             $ tbRel =+ 1
             p "Listen, if you wanted to hit on me you could have just done so. No need to be so physical, handsome."
+<<<<<<< HEAD
             n "[player_name] the Best is clearly taken aback by your brazen flirting, scanning your expression. Taking a moment to compose himself, he smirks at you before leaning in close and whispering to you."
             hide a_neutral
             show a_talking
             tb "You really are committed to this performance, aren't you? Not that I blame you, I'd want to be anyone but yourself too if I were you."
+=======
+            n "[player_name] the Best is clearly taken aback by your brazen flirting, scanning your expression. Taking a moment to compose himself, he leans in close and whispers to you."
+            hide a_neutral
+            show a_talking
+            tb "You really are committed to this performance, aren't you? It's charming to see you try to play anyone that isn't yourself. Almost convinced me."
+>>>>>>> main
             hide a_talking
             show a_neutral
             n "[player_name] the Best takes a moment to adjust their uniform and pull at their collar. It seems that despite their words, you had at least somewhat of an effect on them."
@@ -826,11 +1150,19 @@ label TheBestRouteDay2:
         "<Pretend to be more hurt than you actually are>":
             $ tbRel =+ 2
             n "You theatrically crash to the ground, holding a hand to your face where [player_name] the Best's fist landed. Masquerading a horrible pain, you writhe on the ground dramatically."
+<<<<<<< HEAD
             n "[player_name] the Best's expression shifts to one of horror, as they temporarily regard their own fist with fear of their heretofore unknown power."
             n "[player_name] the Best quickly rushes to help you, kneeling on the ground and trying to get a look at your face."
             hide a_neutral
             show a_talking
             tb "[player_name] you really ARE weak, aren't you. Despite how mighty my punches can be, I thought you were made of stronger stuff than that."
+=======
+            n "[player_name] the Best's expression shifts to one of horror, as they temporarily regard their own fist with fear of their unknown power."
+            n "[player_name] the Best quickly rushes to help you, kneeling on the ground and trying to get a look at your face."
+            hide a_neutral
+            show a_talking
+            tb "You really ARE weak, aren't you. Despite how mighty my punches can be, I thought you were made of stronger stuff than that."
+>>>>>>> main
             hide a_talking
             show a_neutral
             n "[player_name] the Best reaches out a hand to help you up. Surprised, you take it, letting yourself rise via [player_name] the Best's steady hand."
@@ -840,6 +1172,7 @@ label TheBestRouteDay2:
             tb "Well don't get too used to it. We've already wasted far too much time and I just wanted to make sure you weren't overwhelmed by my devastating blows."
             hide a_talking
             show a_neutral
+<<<<<<< HEAD
             n "Before you can get out any sort of response, [player_name] the Best is already leading you by the hand towards the invention room."
             n "UNDER CONSTRUCTION."
             jump TBInventionScene
@@ -847,12 +1180,27 @@ label TheBestRouteDay2:
 label TBInventionScene:
     scene bg inventionRoom with dissolve
     n "The moment the two of you set foot in the invention room, you're both blown away by the facilities within. It's not the most high-tech to begin with, but one thing catches your eye."
+=======
+            n "Before you can get out any sort of response, [player_name] the Best is already leading you towards the invention room."
+            jump TBInventionScene
+
+label TBInventionScene:
+    stop music
+    play music "audio/Happy.mp3"
+    scene bg inventionRoom with dissolve
+
+>>>>>>> main
     show a_talking
     tb "Oh my heavens, there's a crafting table!"
     hide a_talking
     show a_neutral
+<<<<<<< HEAD
     p "Holy fuck it's a crafting table!"
     n "Yes, a crafting table. Inspired by the incredibly popular video game Cavernbuild, 3D printing technology had soared in recent years, culminating in the most expensive yet easiest way to make whatever your mind desired."
+=======
+    p "Holy fuck it's actually a crafting table."
+    n "Yes, a crafting table. Inspired by the incredibly popular video game Cavernbuild. 3D printing technology had soared in recent years, culminating in the most expensive yet easiest way to make whatever your mind desired."
+>>>>>>> main
     n "With the right know-how, dedicated time, and even a vague idea of what you want to make, just about anything was possible."
     n "If you both weren't so enamoured, you might even begin to wonder who could afford to have such a thing on a deserted island."
     n "Grandiose in all ways, [player_name] the Best immediately pipes up with an equally grand suggestion."
@@ -876,8 +1224,13 @@ label TBInventionScene:
     n "[player_name] the Best keeps jabbering on and on about his \"accomplishments\" while you try to keep your head in any sort of productive mood. It's not working too well, and you're getting to the point where you need to say SOMETHING."
     menu SpeakUp:
         n "What do you say?"
+<<<<<<< HEAD
         "My inventions have held their own more than a few times, you know.":
             $ tbRel =+ 2
+=======
+        ## neutral options
+        "My inventions have held their own more than a few times, you know.":
+>>>>>>> main
             hide a_talking
             show a_neutral
             n "[player_name] the Best opens his mouth to object, but you keep going."
@@ -894,8 +1247,14 @@ label TBInventionScene:
             show a_neutral
             n "[player_name] the Best turns away to hide his face, mumbling something about \"Of COURSE his inventions inspire the masses\"."
             n "You can't help but notice the obvious blushing he tries to hide. Maybe it is a LITTLE fun to tease him."
+<<<<<<< HEAD
 
             jump TBInventionTest
+=======
+            jump TBInventionTest
+
+         #me when i stroke his ego
+>>>>>>> main
         "Absolutely, you've always been the better inventor between the two of us, after all.":
             $ tbRel =+ 1
             hide a_talking
@@ -913,6 +1272,10 @@ label TBInventionScene:
             n "[player_name] the Best turns away to resume working, but you can see the corner of his mouth curl up in what seems to be a smile, with his cheeks blushing just a little."
             n "Perhaps the praise meant more to him than you realized."
             
+<<<<<<< HEAD
+=======
+            #stfu twink
+>>>>>>> main
             jump TBInventionTest
         "You've literally never invented a single thing better than my worst invention.":
             $ tbRel =- 1
@@ -928,7 +1291,11 @@ label TBInventionScene:
             hide a_talking
             show a_neutral
             n "As much as these incidents are kind of right, they're not the whole truth."
+<<<<<<< HEAD
             p "And every one of those cases where you \"succeeded\" backfired every time! You gained nothing! Villainy for villainy's sake alone is what those were."p
+=======
+            p "And every one of those cases where you \"succeeded\" backfired every time! You gained nothing! Villainy for villainy's sake alone is what those were."
+>>>>>>> main
             p "The sandwiches expired before you could eat even two!"
             p "You smelled like gingerbread well into April AND couldn't get rid of all those decorations for YEARS!"
             p "You didn't even get credit for Belle Thorp, she went on Dindey Channel and got celebrated for it!"
@@ -966,7 +1333,11 @@ label TBInventionTest:
     tb "You... You... You must have messed something up, [player_name]! There's no other reason this could have failed!"
     hide a_talking
     show a_neutral
+<<<<<<< HEAD
     menu: InventionBlame
+=======
+    menu InventionBlame:
+>>>>>>> main
         n "What do you say in response?"
         "You're right, I must have messed up a calculation or two.":
             $ tbRel =+ 1
@@ -1025,6 +1396,7 @@ label TBInventionTest:
             
             jump TBKitchenScene
 
+<<<<<<< HEAD
 label TBKitchenScene:
     show bg kitchenNight
     n "KITCHEN TIME!!!!! Now kiss."
@@ -1063,3 +1435,108 @@ label ScorchingEnd2:
 label Day2:
     scene bg personalroom
 >>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
+=======
+label ScorchingEnd2:
+    scene bg volcanoerupt with dissolve
+    stop music
+    play music "audio/Sad.mp3"
+    n "[player_name] the Best goes to yell at you, but finds himself coming up short with what to say. Without a word, he begins to sob relentlessly."
+    n "The scene goes on uncomfortably long, with the sounds of [player_name] the Best's sobbing only being broken up by the cracking flames of the broken flying machine."
+    n "After a while of this, [player_name] the Best wipes away his tears and looks over at you with a tired expression."
+    hide a_neutral
+    show a_talking
+    tb "You know what? Go ahead, work on it yourself. I'll focus on doing something more productive with my time. You can get burnt to a crisp for all I care."
+    hide a_talking
+    n "[player_name] the Best walks away without sparing another thought towards you, marching directly towards The Bodyguard's room."
+    show bg volcanonight with fade
+    n "The day ends with you cleaning up your failed invention and preparing for the next day."
+    show bg volcanoday with fade
+    n "As the day ticks by, you find yourself alone in the invention room, frantically calculating as your workload has increased twofold."
+    show bg volcanosunset with fade
+    n "The others are nowhere to be seen, likely having socialized and paired up, lacking faith in your ability to complete the machine in time."
+    show bg volcanonight with fade
+    n "As you continue to work, you don't even notice as the PA system announces the departure of two groups."
+    n "Seems like The Bodyguard and [player_name] the Best grouped up, The Bodyguard always was an expert at comforting people."
+    n "Key Frame Crusader and The Cloaked Dagger also paired up. Likely a strategic move from what you've seen of the two of them."
+    n "And here you are, alone. Destined to die a no-one supervillain on an island in the middle of nowhere."
+    show bg volcanoerupt with fade
+    n "Romance is dead, but it sure is hot in here."
+    return
+    #test
+
+label TBKitchenScene:
+    show bg kitchenNight with dissolve
+    stop music
+    play music "audio/Emotional.mp3"
+
+    show a_neutral
+    n "Well at least Key Frame Crusader was right, the kitchens were certainly stocked."
+    n "You make your way into the kitchen, looking for what food there is to make."
+    n "When was the last time you ate? You don't even remember anymore."
+    n "Another thing you can't tell is whether it's the starving stomach or changing feelings, you don't... entirely dread being in the presence of [player_name] the Best."
+    n "Glancing over to your partner-in-escape, you wonder if this could be a chance to stare woeing them."
+    n "Well, you were certain the quickest way to the heart is throught he back with a sharp knife... but in this case, you could try the stomach."
+    hide a_neutral
+
+    menu MakeTBFood:
+        "<Attempt to make Beef Stroganoff (You, dear player, do not know how to make Beef Stroganoff)>":
+            #test
+            n "...Well, if you're sure that's what you want to do."
+            n "It's sure to impress him if it works!"
+            n "You both work together and despite your combined efforts, the dish ends up... horrendous."
+            # one day insert failed image of bad beef stroganoff here
+            n "It tastes fine... if you eat fast. It doesn't add much to morale nor does it precisely woe your target but... food is food!"
+            n "You share a moment where you wipe a bit of food off his face, but in an act of panic he recoils and excuses himself for the night."
+            n "Well, could have been worse?"
+            n "You get up and clean the mess you both made, washing the dishes and spending at least fifteen minutes staring at the needlessly fancy dishwasher until you could open it."
+            uk "Hello, Mr. Summers!"
+            n "You jump back at the dishwasher...speaking, to you?"
+            p "Who?"
+            n "The dishwasher does not reply, the message seemingly automatic. Who programs their dishwasher to say hello to them?"
+            n "It appears that your captor, likely this 'Mr.Summers', is someone who does that."
+
+            scene bg roomNight with dissolve
+            n "New clue in hand, you eventually return to your room for the evening."
+            jump Day3
+
+        "<Attempt to make Pizza>":
+            $ tbRel =+ 1
+            p "Pizza, that should be pretty simple."
+            n "Thankfully, you are relatively correct."
+            n "Making the pizza alongside [player_name] the Best goes well, both of you even beginning to joke around regarding pizza toppings."
+            menu Pizza:
+                n "What is your favorite?"
+                
+                "I'm just a cheese kind of guy.":
+                    n "The other man side eyes you, clearly in disgust, but says nothing else as you cook"
+                "Veggies all the way!":
+                    n "The other man side eyes you, clearly in disgust, but says nothing else as you cook"
+                "Meat lovers is the only way to go":
+                    n "The other man side eyes you, clearly in disgust, but says nothing else as you cook"
+                "Hawaiin or nothing.":
+                    $ tbRel =-1
+                    n "The other man side eyes you, gagging slightly in utter disgust. He says nothing, but you can sense he really didn't like that."
+            n "Unfortunately, just when everything begins to go well, the mood set, the smell of the pizza wafts through the entire interior chambers of the volcano."
+            n "The other three villians rush in, some asking and others simply taking from the prepared pizza without a second thought."
+            n "Despite the mood change, you and [player_name] the Best share one final smile before parting for the night, food in hand."
+            n "Well, could have been worse?"
+            n "You get up and clean the mess you both made, washing the dishes and spending at least fifteen minutes staring at the needlessly fancy dishwasher until you could open it."
+            uk "Hello, Mr. Summers!"
+            n "You jump back at the dishwasher...speaking, to you?"
+            p "Who?"
+            n "The dishwasher does not reply, the message seemingly automatic. Who programs their dishwasher to say hello to them?"
+            n "It appears that your captor, likely this 'Mr.Summers', is someone who does that."
+            jump Day3
+
+        "<Attempt to make Spaghetti>":
+            $ tbRel =+ 2
+
+            jump Day3
+    
+
+label Day3:
+    play sound "audio/Motif SFX.mp3"
+    scene bg personalRoom with fade
+    "END OF ROUTE IS UNDER CONSTRUCTION"
+    return
+>>>>>>> main
