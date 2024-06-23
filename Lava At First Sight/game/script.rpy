@@ -25,11 +25,17 @@ image bg inventionRoom = "bg inventionRoom.png"
 image bg kitchenDay = "bg kitchen.png"
 image bg kitchenNight = "bg kitchen night.png"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 image bg doorsDay = "bg metalDoors days.png"
 image bg doorsNight = "bg metalDoors night.png"
 image bg secRoom = "bg securityRoom.png"
 >>>>>>> main
+=======
+image bg doorsDay = "bg metalDoors days.png"
+image bg doorsNight = "bg metalDoors night.png"
+image bg secRoom = "bg securityRoom.png"
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
 
 #characters
 image a_neutral = "ardbert neutral.png"
@@ -49,10 +55,7 @@ default kfcRel = 1
 default bgrel = 1
 default tbRel = 1
 default GBRoute = "No"
-<<<<<<< HEAD
 default gbRel = 0
-=======
->>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
 
 label start:
    stop music
@@ -94,7 +97,11 @@ label start:
     
 label BadEnd:
         stop music
+<<<<<<< HEAD
         play music "audio/Sad.mp3"
+=======
+        play music "audio/Test.wav" volume 0.25
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
         n "You stare at the volcano for a long while, weighing your options."
         p "Yeah...yeah no I think I'll pass on this one."
         "ONE WEEK LATER"
@@ -137,6 +144,7 @@ label CharacterIntros:
         n "Ahead, you hear what sounds like... arguing? You can't make out where they are saying but it seems to be multiple voices on the other side of the door bickering."
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         n "Determined to keep pushing forward, you make your way towards the other door. The door easily slides open as you step inside, attempting to be quiet as you continue inside."
 =======
         n "Determind to keep pushing forward, you make your way towards the other door. The door easily slides open as you step inside, attempting to be quiet as you continue inside."
@@ -144,6 +152,9 @@ label CharacterIntros:
 =======
         n "Determined to keep pushing forward, you make your way towards the other door. The door easily slides open as you step inside, attempting to be quiet as you continue in."
 >>>>>>> main
+=======
+        n "Determined to keep pushing forward, you make your way towards the other door. The door easily slides open as you step inside, attempting to be quiet as you continue in."
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
 
         # Future bang noise (game/audio directory)? -> play sound "file ext"
         n "BANG!"
@@ -201,6 +212,7 @@ label CharacterIntros:
         show s_neutral
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         n "Your childhood friend. Shaun. He goes by The Bodyguard now, last you heard. You can't remember the last time you spoke to one another."
         p "The Bodyguard? What's going on here?"
 =======
@@ -211,6 +223,10 @@ label CharacterIntros:
         n "Your childhood friend. Shaun. He goes by The Bodyguard now, last you heard. You can't remember the last time you spoke to one another."
         p "The Bodyguard? What's going on here?"
 >>>>>>> main
+=======
+        n "Your childhood friend. Shaun. He goes by The Bodyguard now, last you heard. You can't remember the last time you spoke to one another."
+        p "The Bodyguard? What's going on here?"
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
         hide s_neutral
         show s_talking
         bg "I'm... not sure. "
@@ -262,6 +278,7 @@ label CavernDay1:
          uk "Congratulations, my friends."
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
          uk "As you may have guessed, you have all been brought here under what one might call false pretenses."
 =======
          uk "As you may have guessed, you have all been brought here under what one might call, false pretense."
@@ -269,6 +286,9 @@ label CavernDay1:
 =======
          uk "As you may have guessed, you have all been brought here under what one might call false pretenses."
 >>>>>>> main
+=======
+         uk "As you may have guessed, you have all been brought here under what one might call false pretenses."
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
          uk "I'm sorry to have to tell you this, but this volcano is set to explode in three days. Which means that should you not manage to escape, you'll be burnt to ash."
          n "Well that's... lovely."
          uk "But! I do have good news."
@@ -298,6 +318,7 @@ label CavernSunset1:
     n "Good thing he didn't overreact"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     n "You turn away from %(player_name)s the Best banging on the metal doors to the Bodyguard. The taller man only looks back to you for a moment before leaving."
 =======
     n "You turn away from %(player_name)s banging on the metal doors to the Bodyguard. The taller man only looks back to you a moment before leaving."
@@ -306,6 +327,10 @@ label CavernSunset1:
 
     n "You turn away from %(player_name)s the Best banging on the metal doors to the Bodyguard. The taller man only looks back to you for a moment before leaving."
 >>>>>>> main
+=======
+
+    n "You turn away from %(player_name)s the Best banging on the metal doors to the Bodyguard. The taller man only looks back to you for a moment before leaving."
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
     n "You notice then that him, the Key Frame Crusader, and the Cloaked Dagger were all heading to rooms built into the central chamber."
     n "Whoever your host is, at least they were generous enough to give you beds."
     n "Still, even as you approach your own quarters, you don't feel capable of rest just yet."
@@ -335,6 +360,7 @@ label Night1Choice:
             $ visitconfirm = "Yes"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         
 =======
 >>>>>>> main
@@ -345,16 +371,21 @@ label Night1Choice:
 <<<<<<< HEAD
 =======
             scene bg personalHallway
-
+=======
             jump FollowCD
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
+
         "<Follow the Bodyguard>":
             $ visitconfirm = "Yes"
             scene bg personalHallway
+<<<<<<< HEAD
 >>>>>>> ffe96e578f82a40682a0bc4588777853ff7ed61f
 
 =======
             scene bg personalHallway
 >>>>>>> main
+=======
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
             jump FollowBG
 
         "<Follow the Key Frame Crusader>":
@@ -363,17 +394,6 @@ label Night1Choice:
             jump FollowKFC
        
         #secret ending start
-<<<<<<< HEAD
-        "<Investigate the room?>" if visitconfirm == "No":
-            $ visitconfirm = "Yes"
-            $ GBRoute = "Yes"
-            jump InvestigateRoom
-
-        #Finish Day 1
-        "<Call it a night>" if visitconfirm == "Yes":
-            jump CallitaNight
-            
-=======
         "<Investigate the seam in the wall>" if visitconfirm == "No":
             $ visitconfirm = "Yes"
             $ GBRoute = "Yes"
@@ -381,6 +401,7 @@ label Night1Choice:
 
         #Finish Day 1
         "<Call it a night>" if visitconfirm == "Yes":
+<<<<<<< HEAD
 <<<<<<< HEAD
             scene bg personalRoom
             p "...What the fuck"
@@ -663,12 +684,20 @@ label FollowKFC:
 >>>>>>> main
 
 <<<<<<< HEAD
+=======
+            jump CallitaNight
+
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
 label CallitaNight:
             scene bg roomNight with dissolve
             p "...What the fuck"
             n "Your room is not quite what you expected. The dull room with a weirdly detailed rug, washed in shades of pinks, purples, and reds."
             n "It wasn't exactly what you expected in a situation where you are functionally kidnapped, but that's not necessarily bad?"
+<<<<<<< HEAD
             play sound "audio/knock sound.mp3" volume 0.25
+=======
+            play sound "audio/knock sound.mp3" volume 0.75
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
             "KNOCK KNOCK"
             n "The knocking noise on your door catches your attention"
             bg "[player_name], are you in there?"
@@ -993,9 +1022,12 @@ label FollowCD:
 
 label FollowBG:
     scene bg personalHallway
+<<<<<<< HEAD
     stop music
     play music "audio/Emotional.mp3"
 
+=======
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
     n "Sometimes it's easier to stick to what you know, especially when you know so, so little."
     show s_neutral
     n "You follow your former friend down the hallway, letting the chord of connection you share pull you in the direction he walked."
@@ -1050,6 +1082,10 @@ label FollowBG:
     #scene bg
     "UNDER CONSTRUCTION"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
     jump Night1Choice
 
 label FollowKFC:
@@ -1074,25 +1110,28 @@ label KFCDay2:
 
 label TheBestRouteDay2:
 <<<<<<< HEAD
+<<<<<<< HEAD
     scene bg personalRoom with dissolve
     n "Your unconscious mind races as you dream of days before your arrival here on the island. You remember your days as a fledgeling villain, fresh off your henchmanship under Charismata."
     n "You began by committing the smallest crimes possible. Shoplifting from supermarkets, stealing plant cuttings, literally taking candy from babies, the works."
     n "You've come a long way since then. By now, though the scope of your crimes hasn't increased too much, you're finally gaining some serious notoriety and fame in Sunnydayle Valley."
     n "Unfortunately for you... That also comes with some downsides."
+=======
+    play sound "audio/Motif SFX.mp3"
+    scene bg personalRoom with fade
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
     n "BANG! BANG! BANG!"
     n "You're rudely woken up by a series of incredibly loud knocks at your door, accompanied by an unfortunately immediately recognizeable shrill voice."
-    show a_talking
     tb "GET OUT HERE THIS INSTANT [player_name]! I KNOW YOU'RE USED TO SLACKING OFF BUT WE HAVE VITAL WORK TO DO!"
-    hide a_talking
-    show a_neutral
     n "Regret hits you like a truck, as you already feel dread in the face of what you must do."
     n "The heavy knocks continue as you slowly get dressed and get up to open the door."
     scene bg personalHallway with dissolve
-    n "As you do so, you swing it open quickly and are met with a fist just as swift, originally aimed for the door but landing square on your face. That bastard [player_name] the Best hit you!"
     show a_neutral
+    n "As you do so, you swing it open quickly and are met with a fist just as swift, originally aimed for the door but landing square on your face. That bastard [player_name] the Best hit you!"
     menu HitReaction:
         n "How do you react?"
         "<Berate [player_name] the Best for hitting you>":
+<<<<<<< HEAD
             p "What the hell, man? I just woke up! Are you seriously so impatient you'd deck me for waking up a little late? News flash, this is KIND OF a stressful situation here! Sorry if I want to sleep in a little."
 =======
     play sound "audio/Motif SFX.mp3"
@@ -1113,6 +1152,10 @@ label TheBestRouteDay2:
             p "What the hell, man? I just woke up! Sorry if I want to sleep in a little, but it's not exactly lost on me this is a STRESSFUL SITUATION."
             p "Jesus CHRIST, man."
 >>>>>>> main
+=======
+            p "What the hell, man? I just woke up! Sorry if I want to sleep in a little, but it's not exactly lost on me this is a STRESSFUL SITUATION."
+            p "Jesus CHRIST, man."
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
             n "[player_name] the Best looks taken aback, like they didn't expect such a harsh reaction from you, but that doesn't last very long."
             hide a_neutral
             show a_talking
@@ -1127,6 +1170,7 @@ label TheBestRouteDay2:
             $ tbRel =+ 1
             p "Listen, if you wanted to hit on me you could have just done so. No need to be so physical, handsome."
 <<<<<<< HEAD
+<<<<<<< HEAD
             n "[player_name] the Best is clearly taken aback by your brazen flirting, scanning your expression. Taking a moment to compose himself, he smirks at you before leaning in close and whispering to you."
             hide a_neutral
             show a_talking
@@ -1137,6 +1181,12 @@ label TheBestRouteDay2:
             show a_talking
             tb "You really are committed to this performance, aren't you? It's charming to see you try to play anyone that isn't yourself. Almost convinced me."
 >>>>>>> main
+=======
+            n "[player_name] the Best is clearly taken aback by your brazen flirting, scanning your expression. Taking a moment to compose himself, he leans in close and whispers to you."
+            hide a_neutral
+            show a_talking
+            tb "You really are committed to this performance, aren't you? It's charming to see you try to play anyone that isn't yourself. Almost convinced me."
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
             hide a_talking
             show a_neutral
             n "[player_name] the Best takes a moment to adjust their uniform and pull at their collar. It seems that despite their words, you had at least somewhat of an effect on them."
@@ -1151,6 +1201,7 @@ label TheBestRouteDay2:
             $ tbRel =+ 2
             n "You theatrically crash to the ground, holding a hand to your face where [player_name] the Best's fist landed. Masquerading a horrible pain, you writhe on the ground dramatically."
 <<<<<<< HEAD
+<<<<<<< HEAD
             n "[player_name] the Best's expression shifts to one of horror, as they temporarily regard their own fist with fear of their heretofore unknown power."
             n "[player_name] the Best quickly rushes to help you, kneeling on the ground and trying to get a look at your face."
             hide a_neutral
@@ -1163,6 +1214,13 @@ label TheBestRouteDay2:
             show a_talking
             tb "You really ARE weak, aren't you. Despite how mighty my punches can be, I thought you were made of stronger stuff than that."
 >>>>>>> main
+=======
+            n "[player_name] the Best's expression shifts to one of horror, as they temporarily regard their own fist with fear of their unknown power."
+            n "[player_name] the Best quickly rushes to help you, kneeling on the ground and trying to get a look at your face."
+            hide a_neutral
+            show a_talking
+            tb "You really ARE weak, aren't you. Despite how mighty my punches can be, I thought you were made of stronger stuff than that."
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
             hide a_talking
             show a_neutral
             n "[player_name] the Best reaches out a hand to help you up. Surprised, you take it, letting yourself rise via [player_name] the Best's steady hand."
@@ -1173,7 +1231,11 @@ label TheBestRouteDay2:
             hide a_talking
             show a_neutral
 <<<<<<< HEAD
+<<<<<<< HEAD
             n "Before you can get out any sort of response, [player_name] the Best is already leading you by the hand towards the invention room."
+=======
+            n "Before you can get out any sort of response, [player_name] the Best is already leading you towards the invention room."
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
             n "UNDER CONSTRUCTION."
             jump TBInventionScene
 
@@ -1292,10 +1354,14 @@ label TBInventionScene:
             show a_neutral
             n "As much as these incidents are kind of right, they're not the whole truth."
 <<<<<<< HEAD
+<<<<<<< HEAD
             p "And every one of those cases where you \"succeeded\" backfired every time! You gained nothing! Villainy for villainy's sake alone is what those were."p
 =======
             p "And every one of those cases where you \"succeeded\" backfired every time! You gained nothing! Villainy for villainy's sake alone is what those were."
 >>>>>>> main
+=======
+            p "And every one of those cases where you \"succeeded\" backfired every time! You gained nothing! Villainy for villainy's sake alone is what those were."
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
             p "The sandwiches expired before you could eat even two!"
             p "You smelled like gingerbread well into April AND couldn't get rid of all those decorations for YEARS!"
             p "You didn't even get credit for Belle Thorp, she went on Dindey Channel and got celebrated for it!"
@@ -1334,10 +1400,14 @@ label TBInventionTest:
     hide a_talking
     show a_neutral
 <<<<<<< HEAD
+<<<<<<< HEAD
     menu: InventionBlame
 =======
     menu InventionBlame:
 >>>>>>> main
+=======
+    menu InventionBlame:
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
         n "What do you say in response?"
         "You're right, I must have messed up a calculation or two.":
             $ tbRel =+ 1
@@ -1428,6 +1498,7 @@ label ScorchingEnd2:
     n "Romance is dead, but it sure is hot in here."
     return
     #test
+<<<<<<< HEAD
 
 
 
@@ -1540,3 +1611,5 @@ label Day3:
     "END OF ROUTE IS UNDER CONSTRUCTION"
     return
 >>>>>>> main
+=======
+>>>>>>> 53fe2e13bb05574eaee4f15332e329dabffbe978
